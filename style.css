@@ -1,0 +1,72 @@
+.map { /*formats the position of the map relative to the web page*/
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin-top: 0px; /*the lack of margins makes the map fill the screen*/
+}
+
+.map-overlay-search { /*formats the overlay boxes on top of the map to provide a white background for text and interactive features*/
+    position: relative;
+    font: 14px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    background: rgba(255, 255, 255, 0.8);
+    top: 0;
+    left: 0;
+    width: 260px;
+    margin: 10px 0 0 10px;
+    padding: 10px; /*around elements inside the overlay*/
+    overflow: visible;
+}
+
+.geocoder { /*formats the geocoder (search for location)*/
+    position: relative;
+    margin: 10px 0 10px; /*adds padding so that it does not look cramped*/
+}
+
+#returnbutton {
+    position: relative;
+    margin: 10px 0 10px; /*adds padding so that it does not look cramped*/
+    width: 100%; /*sets button wifth to the width of the block underneath it*/
+}
+
+.map-overlay-data {
+    position: relative;
+    font: 14px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    background: rgba(255, 255, 255, 0.8); /*makes the background white*/
+    width: 260px;
+    top: 0;
+    left: 10px;
+    margin-top: 10px;
+    padding: 10px; /*adds padding so that it does not look cramped*/
+    overflow: visible;
+}
+/*formatting of legend background block (see further down for legend content formatting)*/
+.legend {
+    position: absolute;
+    display: none;
+    background-color: #fff;
+    border-radius: 3px;
+    bottom: 0;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /*horizontal shadow, vertical shadow, size of shadow, color*/
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    padding: 10px;
+    right: 10px;
+    z-index: 1;
+} 
+/*This will format any header added to the legend. I do not have one at the moment as it is obvious it is a legend without one.
+Also, because there are cafes and neighbourhoods on the map, assigning a more specific name would be confusing to users.
+However, as this map evolves for my final project, I may wish to add a header and keep this code.*/
+.legend h4 {
+    margin: 0 0 10px;
+}
+/*formatting of legend contents*/
+.legend-key {
+    display: inline-block;
+    border-radius: 50%; /*curves the border of the default square to become a circle*/
+    height: 10px; /*circle size*/
+    width: 10px;
+    margin-right: 5px; /*circle position*/
+}

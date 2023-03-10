@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3</title>
+    <!-- mapbox API -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
+    <!-- mapbox geocoder plugin -->
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
+        type="text/css">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- MAP CONTAINER -->
+    <div id='map' class='map'></div>
+
+
+    <!-- NAVIGATION: GEOCODER SEARCH BAR AND RETURN BUTTON -->
+    <div class='map-overlay-search'>
+        <label>Search for location</label> <!-- sets the text above the search box -->
+        <div id="geocoder" class="geocoder"></div> <!-- creates a class to format the geocoder in CSS -->
+        <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to full extent</button>
+    </div>
+
+    <!-- MAP OVERLAY (FOR INTERACTIVE FEATURES) -->
+    <div class='map-overlay-data'> <!-- this div class creates an overlay/background to place features on top of -->
+        <label>Filter map view</label>
+        <div class="form-check"> <!-- When checked, it makes the legend visible -->
+            <input class="form-check-input" type="checkbox" value="" id="legendcheck"> <!-- By default, legend if hidden (unchecked) -->
+            <label class="form-check-label" for="flexCheckDefault"> 
+                Legend
+            </label>
+
+        </div>
+ <!-- FILTER FEATURES (INTERACTIVE CHECKBOXES) -->
+        <div class="form-check"> <!-- Allows users to view or remove the neighbourhood data to see only cafe locations -->
+            <input class="form-check-input" type="checkbox" value="" id="layercheck" checked> <!-- Default is set to checked (neighbourhoods show by default) -->
+            <label class="form-check-label" for="flexCheckChecked">
+                Neighbourhood 
+            </label>
+        </div>
+
+    </div>
+
+    <!-- LEGEND -->
+    <div id='legend' class='legend'>
+        <h4></h4> <!-- This will add a header to the legend. I do not have one now; it is obvious it is a legend without one.
+            However, as this map evolves for my final project, I may wish to add a header, so I am keeping this code as a placeholder -->
+        <!-- The legend contents will appear below the header (if one is added) -->
+    </div>
+
+<!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
