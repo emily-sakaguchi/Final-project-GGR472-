@@ -5,7 +5,7 @@
     left: 0;
     right: 0;
     width: 100%;
-    margin-top: 0px; /*the lack of margins makes the map fill the screen*/
+    margin-top: 55px; /*the lack of margins makes the map fill the screen*/
 }
 
 .map-overlay-search { /*formats the overlay boxes on top of the map to provide a white background for text and interactive features*/
