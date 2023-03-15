@@ -1,83 +1,1382 @@
-{"type":"FeatureCollection", "features":[
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.53627996414626,43.6369438383642,0]},"properties":{"LOCATION_N":"Kipling","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.5245974457415,43.64533327756703,0]},"properties":{"LOCATION_N":"Islington","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.51128949320379,43.64812285707728,0]},"properties":{"LOCATION_N":"Royal York","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.49509379479417,43.65008319612922,0]},"properties":{"LOCATION_N":"Old Mill","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.48446285953237,43.64979582513455,0]},"properties":{"LOCATION_N":"Jane","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.476207523531,43.65166365254983,0]},"properties":{"LOCATION_N":"Runnymede","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.46622431311492,43.654058699920164,0]},"properties":{"LOCATION_N":"High Park","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.45985421031489,43.6554752814431,0]},"properties":{"LOCATION_N":"Keele","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.45241193678224,43.6571808661211,0]},"properties":{"LOCATION_N":"Dundas West","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.44262387637849,43.659126637826496,0]},"properties":{"LOCATION_N":"Lansdowne","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.43548966210619,43.660251222523634,0]},"properties":{"LOCATION_N":"Dufferin","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.42593849732434,43.66242489570447,0]},"properties":{"LOCATION_N":"Ossington","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.41834650697315,43.66407775956876,0]},"properties":{"LOCATION_N":"Christie","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.4114905081309,43.6657252402752,0]},"properties":{"LOCATION_N":"Bathurst","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.39930785897991,43.668283547715625,0]},"properties":{"LOCATION_N":"St. George","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.38986907793168,43.67021507066293,0]},"properties":{"LOCATION_N":"Bay","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.38572134066922,43.67100393778961,0]},"properties":{"LOCATION_N":"Bloor-Yonge","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.37684698458872,43.672362493722545,0]},"properties":{"LOCATION_N":"Sherbourne","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.36849745843318,43.67386707895782,0]},"properties":{"LOCATION_N":"Castle Frank","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.35878761523952,43.676838511959154,0]},"properties":{"LOCATION_N":"Broadview","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.35225812974852,43.678349976254154,0]},"properties":{"LOCATION_N":"Chester","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.34517720264058,43.67974099436646,0]},"properties":{"LOCATION_N":"Pape","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.3377829458565,43.68118439126805,0]},"properties":{"LOCATION_N":"Donlands","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.33028511871004,43.68281084202101,0]},"properties":{"LOCATION_N":"Greenwood","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.32310038767775,43.684332709631214,0]},"properties":{"LOCATION_N":"Coxwell","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.31298853222478,43.68654993679301,0]},"properties":{"LOCATION_N":"Woodbine","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.3020158365064,43.688982285515465,0]},"properties":{"LOCATION_N":"Main Street","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.28945003702214,43.694621486873366,0]},"properties":{"LOCATION_N":"Victoria Park","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.2792049721923,43.71118675013428,0]},"properties":{"LOCATION_N":"Warden","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.26453236285532,43.73226610154995,0]},"properties":{"LOCATION_N":"Kennedy","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.37913555955599,43.64602190194262,0]},"properties":{"LOCATION_N":"Union","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.38479564563357,43.64766236646893,0]},"properties":{"LOCATION_N":"St. Andrew","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.37790760478342,43.6491493518824,0]},"properties":{"LOCATION_N":"King","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.38661865612845,43.6508563271478,0]},"properties":{"LOCATION_N":"Osgoode","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.37925663448998,43.65243924024952,0]},"properties":{"LOCATION_N":"Queen","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.38830576858881,43.65479390050992,0]},"properties":{"LOCATION_N":"St. Patrick","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.3809145490087,43.656327401315664,0]},"properties":{"LOCATION_N":"Dundas","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.39046621684712,43.6598579985749,0]},"properties":{"LOCATION_N":"Queen's Park","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.38314253171174,43.6614533956117,0]},"properties":{"LOCATION_N":"College","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.38352755772735,43.665268428801376,0]},"properties":{"LOCATION_N":"Wellesley","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.39356634511344,43.667368990069406,0]},"properties":{"LOCATION_N":"Museum","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.38852435205364,43.677095901103144,0]},"properties":{"LOCATION_N":"Rosedale","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.39124599044634,43.6833426188817,0]},"properties":{"LOCATION_N":"Summerhill","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.39340094460837,43.68830258340573,0]},"properties":{"LOCATION_N":"St. Clair","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.39726739510085,43.697986518405266,0]},"properties":{"LOCATION_N":"Davisville","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.39843816851233,43.70672687848941,0]},"properties":{"LOCATION_N":"Eglinton","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.40217832755395,43.72495738549427,0]},"properties":{"LOCATION_N":"Lawrence","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.40620131038301,43.7442714698205,0]},"properties":{"LOCATION_N":"York Mills","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.41092390295195,43.76152180653582,0]},"properties":{"LOCATION_N":"Sheppard-Yonge","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.41277557868756,43.76884010225812,0]},"properties":{"LOCATION_N":"North York Centre","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.41557020789205,43.779770611288576,0]},"properties":{"LOCATION_N":"Finch","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.40476243836824,43.66896214132424,0]},"properties":{"LOCATION_N":"Spadina","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.4071105033669,43.674856393073334,0]},"properties":{"LOCATION_N":"Dupont","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.41533888721482,43.68382386431193,0]},"properties":{"LOCATION_N":"St Clair West","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.43599463746675,43.698836244870854,0]},"properties":{"LOCATION_N":"Eglinton West","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.44118242709716,43.70954053125476,0]},"properties":{"LOCATION_N":"Glencairn","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.44418943420449,43.71606460977232,0]},"properties":{"LOCATION_N":"Lawrence West","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.44786848984052,43.72561565700627,0]},"properties":{"LOCATION_N":"Yorkdale","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.44992098036458,43.73409317999868,0]},"properties":{"LOCATION_N":"Wilson","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.46247546377123,43.75043845061082,0]},"properties":{"LOCATION_N":"Sheppard West","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Yonge-University Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.38775574271676,43.766663445466,0]},"properties":{"LOCATION_N":"Bayview","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Sheppard Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.3766523699723,43.76919380896543,0]},"properties":{"LOCATION_N":"Bessarion","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Sheppard Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.36813639587608,43.77102449711631,0]},"properties":{"LOCATION_N":"Leslie","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Sheppard Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.34697600174194,43.77514362662834,0]},"properties":{"LOCATION_N":"Don Mills","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Sheppard Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.46247546377123,43.75043845061082,0]},"properties":{"LOCATION_N":"Sheppard West","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Toronto-York Spadina Subway Extension"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.47833389240236,43.75360651192682,0]},"properties":{"LOCATION_N":"Downsview Park","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Toronto-York Spadina Subway Extension"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.49098678175682,43.76349049605139,0]},"properties":{"LOCATION_N":"Finch West","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Toronto-York Spadina Subway Extension"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.49964472739717,43.774128696208244,0]},"properties":{"LOCATION_N":"York University","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Toronto-York Spadina Subway Extension"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.51163530685893,43.77752252698682,0]},"properties":{"LOCATION_N":"Pioneer Village","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Toronto-York Spadina Subway Extension"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.5232367280548,43.78355616311094,0]},"properties":{"LOCATION_N":"Highway 407","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Toronto-York Spadina Subway Extension"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.52727364105895,43.7935138266894,0]},"properties":{"LOCATION_N":"Vaughan Metropolitan Centre","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Toronto-York Spadina Subway Extension"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.41092390295195,43.76152180653582,0]},"properties":{"LOCATION_N":"Sheppard-Yonge","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Sheppard Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.40397305818537,43.66728897098145,0]},"properties":{"LOCATION_N":"Spadina","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.39930785897991,43.668283547715625,0]},"properties":{"LOCATION_N":"St. George","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.38572134066922,43.67100393778961,0]},"properties":{"LOCATION_N":"Bloor-Yonge","STATUS":"Existing","TECHNOLOGY":"Subway","NAME":"Bloor-Danforth Subway"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.26453236285532,43.73226610154995,0]},"properties":{"LOCATION_N":"Kennedy","STATUS":"Existing","TECHNOLOGY":"Subway (To Be Removed)","NAME":"Scarborough RT"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.27004688861919,43.75050287005394,0]},"properties":{"LOCATION_N":"Lawrence East","STATUS":"Existing","TECHNOLOGY":"Subway (To Be Removed)","NAME":"Scarborough RT"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.27614213838332,43.76687470852484,0]},"properties":{"LOCATION_N":"Ellesmere","STATUS":"Existing","TECHNOLOGY":"Subway (To Be Removed)","NAME":"Scarborough RT"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.27198720202219,43.77045507044209,0]},"properties":{"LOCATION_N":"Midland","STATUS":"Existing","TECHNOLOGY":"Subway (To Be Removed)","NAME":"Scarborough RT"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.25785529134967,43.774452266715805,0]},"properties":{"LOCATION_N":"Scarborough Town Centre","STATUS":"Existing","TECHNOLOGY":"Subway (To Be Removed)","NAME":"Scarborough RT"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[-79.25160324244933,43.774911568827186,0]},"properties":{"LOCATION_N":"McCowan","STATUS":"Existing","TECHNOLOGY":"Subway (To Be Removed)","NAME":"Scarborough RT"}}
-]}
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.53627996414626,
+                    43.6369438383642,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Kipling",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.5245974457415,
+                    43.64533327756703,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Islington",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.51128949320379,
+                    43.64812285707728,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Royal York",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.49509379479417,
+                    43.65008319612922,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Old Mill",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.48446285953237,
+                    43.64979582513455,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Jane",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.476207523531,
+                    43.65166365254983,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Runnymede",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.46622431311492,
+                    43.654058699920164,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "High Park",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.45985421031489,
+                    43.6554752814431,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Keele",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.45241193678224,
+                    43.6571808661211,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Dundas West",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.44262387637849,
+                    43.659126637826496,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Lansdowne",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.43548966210619,
+                    43.660251222523634,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Dufferin",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.42593849732434,
+                    43.66242489570447,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Ossington",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.41834650697315,
+                    43.66407775956876,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Christie",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.4114905081309,
+                    43.6657252402752,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Bathurst",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.39930785897991,
+                    43.668283547715625,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "St. George",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.38986907793168,
+                    43.67021507066293,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Bay",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.38572134066922,
+                    43.67100393778961,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Bloor-Yonge",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.37684698458872,
+                    43.672362493722545,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Sherbourne",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.36849745843318,
+                    43.67386707895782,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Castle Frank",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.35878761523952,
+                    43.676838511959154,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Broadview",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.35225812974852,
+                    43.678349976254154,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Chester",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.34517720264058,
+                    43.67974099436646,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Pape",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.3377829458565,
+                    43.68118439126805,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Donlands",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.33028511871004,
+                    43.68281084202101,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Greenwood",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.32310038767775,
+                    43.684332709631214,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Coxwell",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.31298853222478,
+                    43.68654993679301,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Woodbine",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.3020158365064,
+                    43.688982285515465,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Main Street",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.28945003702214,
+                    43.694621486873366,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Victoria Park",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.2792049721923,
+                    43.71118675013428,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Warden",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.26453236285532,
+                    43.73226610154995,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Kennedy",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.37913555955599,
+                    43.64602190194262,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Union",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.38479564563357,
+                    43.64766236646893,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "St. Andrew",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.37790760478342,
+                    43.6491493518824,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "King",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.38661865612845,
+                    43.6508563271478,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Osgoode",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.37925663448998,
+                    43.65243924024952,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Queen",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.38830576858881,
+                    43.65479390050992,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "St. Patrick",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.3809145490087,
+                    43.656327401315664,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Dundas",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.39046621684712,
+                    43.6598579985749,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Queen's Park",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.38314253171174,
+                    43.6614533956117,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "College",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.38352755772735,
+                    43.665268428801376,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Wellesley",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.39356634511344,
+                    43.667368990069406,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Museum",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.38852435205364,
+                    43.677095901103144,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Rosedale",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.39124599044634,
+                    43.6833426188817,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Summerhill",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.39340094460837,
+                    43.68830258340573,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "St. Clair",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.39726739510085,
+                    43.697986518405266,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Davisville",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.39843816851233,
+                    43.70672687848941,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Eglinton",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.40217832755395,
+                    43.72495738549427,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Lawrence",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.40620131038301,
+                    43.7442714698205,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "York Mills",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.41092390295195,
+                    43.76152180653582,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Sheppard-Yonge",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.41277557868756,
+                    43.76884010225812,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "North York Centre",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.41557020789205,
+                    43.779770611288576,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Finch",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.40476243836824,
+                    43.66896214132424,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Spadina",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.4071105033669,
+                    43.674856393073334,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Dupont",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.41533888721482,
+                    43.68382386431193,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "St Clair West",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.43599463746675,
+                    43.698836244870854,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Eglinton West",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.44118242709716,
+                    43.70954053125476,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Glencairn",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.44418943420449,
+                    43.71606460977232,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Lawrence West",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.44786848984052,
+                    43.72561565700627,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Yorkdale",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.44992098036458,
+                    43.73409317999868,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Wilson",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.46247546377123,
+                    43.75043845061082,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Sheppard West",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Yonge-University Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.38775574271676,
+                    43.766663445466,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Bayview",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Sheppard Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.3766523699723,
+                    43.76919380896543,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Bessarion",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Sheppard Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.36813639587608,
+                    43.77102449711631,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Leslie",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Sheppard Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.34697600174194,
+                    43.77514362662834,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Don Mills",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Sheppard Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.46247546377123,
+                    43.75043845061082,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Sheppard West",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Toronto-York Spadina Subway Extension"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.47833389240236,
+                    43.75360651192682,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Downsview Park",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Toronto-York Spadina Subway Extension"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.49098678175682,
+                    43.76349049605139,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Finch West",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Toronto-York Spadina Subway Extension"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.49964472739717,
+                    43.774128696208244,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "York University",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Toronto-York Spadina Subway Extension"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.51163530685893,
+                    43.77752252698682,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Pioneer Village",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Toronto-York Spadina Subway Extension"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.5232367280548,
+                    43.78355616311094,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Highway 407",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Toronto-York Spadina Subway Extension"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.52727364105895,
+                    43.7935138266894,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Vaughan Metropolitan Centre",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Toronto-York Spadina Subway Extension"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.41092390295195,
+                    43.76152180653582,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Sheppard-Yonge",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Sheppard Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.40397305818537,
+                    43.66728897098145,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Spadina",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.39930785897991,
+                    43.668283547715625,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "St. George",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.38572134066922,
+                    43.67100393778961,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Bloor-Yonge",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway",
+                "NAME": "Bloor-Danforth Subway"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.26453236285532,
+                    43.73226610154995,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Kennedy",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway (To Be Removed)",
+                "NAME": "Scarborough RT"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.27004688861919,
+                    43.75050287005394,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Lawrence East",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway (To Be Removed)",
+                "NAME": "Scarborough RT"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.27614213838332,
+                    43.76687470852484,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Ellesmere",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway (To Be Removed)",
+                "NAME": "Scarborough RT"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.27198720202219,
+                    43.77045507044209,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Midland",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway (To Be Removed)",
+                "NAME": "Scarborough RT"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.25785529134967,
+                    43.774452266715805,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "Scarborough Town Centre",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway (To Be Removed)",
+                "NAME": "Scarborough RT"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -79.25160324244933,
+                    43.774911568827186,
+                    0
+                ]
+            },
+            "properties": {
+                "LOCATION_N": "McCowan",
+                "STATUS": "Existing",
+                "TECHNOLOGY": "Subway (To Be Removed)",
+                "NAME": "Scarborough RT"
+            }
+        }
+    ]
+}
