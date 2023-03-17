@@ -101,6 +101,53 @@ map.on('load', () => {
     });
 
 
+    map.addSource('subway-stns',{
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/main/subway-stations.geojson' 
+    });
+
+    // Adds subway stations layer to map
+    map.addLayer({
+        'id': 'subway-stations',
+        'type': 'circle',
+        'source': 'subway-stns',
+        'paint': {
+            'circle-radius': 4,
+            'circle-color': '#B42222'
+        }
+    });
+    
+    // Turns off subway station layer by default
+    map.setLayoutProperty(
+        'subway-stations',
+        'visibility',
+        'none'
+    );
+
+
+    map.addSource('ttcbusroutes',{
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/main/BusRoutes_Toronto.geojson' 
+    });
+
+    // Adds bus routes layer to map
+    map.addLayer({
+        'id': 'bus-routes',
+        'type': 'line',
+        'source': 'ttcbusroutes',
+        'paint': {
+            'line-color': '#B42222'
+        }
+    });
+    
+    // Turns off bus routes layer by default
+    map.setLayoutProperty(
+        'bus-routes',
+        'visibility',
+        'none'
+    );
+
+
     /*--------------------------------------------------------------------
     HOVER EVENT
     - if a neighbourhood polygon is under the mouse hover, it will turn opaque
@@ -222,6 +269,25 @@ document.getElementById('layercheck').addEventListener('change', (e) => {
     );
 });
 
+// Subway stations layer display (check box)
+document.getElementById('subwayCheck').addEventListener('change', (e) => {
+    map.setLayoutProperty(
+        'subway-stations',
+        'visibility',
+        e.target.checked ? 'visible' : 'none'
+    );
+});
+
+// Bus routes layer display (check box)
+document.getElementById('busCheck').addEventListener('change', (e) => {
+    map.setLayoutProperty(
+        'bus-routes',
+        'visibility',
+        e.target.checked ? 'visible' : 'none'
+    );
+});
+
+
 /*--------------------------------------------------------------------
 POP-UP ON CLICK EVENT
 - When the cursor moves over the map, it changes from the default hand to a pointer
@@ -235,12 +301,28 @@ map.on('mouseleave', 'neighbourhoods-fill', () => {
     map.getCanvas().style.cursor = ''; //Switches cursor back when mouse leaves neighbourhood-fill layer
 });
 
-
 map.on('click', 'neighbourhoods-fill', (e) => {
     new mapboxgl.Popup() //Declares a new popup on each click
         .setLngLat(e.lngLat) //Coordinates of the mouse click to determine the coordinates of the pop-up
         //Text for the pop-up:
-        .setHTML("<b>Neighbourhood name:</b> " + e.features[0].properties.AREA_NAME + "<br>" +// shows neighbourhood name
-            "<b>Improvment status:</b> " + e.features[0].properties.CLASSIFICATION) //shows neighbourhood improvement status
+        .setHTML("<b>Neighbourhood Name:</b> " + e.features[0].properties.AREA_NAME + "<br>" +// shows neighbourhood name
+            "<b>Improvment Status:</b> " + e.features[0].properties.CLASSIFICATION) //shows neighbourhood improvement status
         .addTo(map); //Adds the popup to the map
-})
+});
+
+
+map.on('mouseenter', 'subway-stations', () => {
+    map.getCanvas().style.cursor = 'pointer';   //Switches cursor to pointer when mouse is over a subway station point
+});
+
+map.on('mouseleave', 'subway-stations', () => {
+    map.getCanvas().style.cursor = '';  //Switches cursor back when mouse leaves subway station point
+
+});
+
+map.on('click', 'subway-stations', (e) => {
+    new mapboxgl.Popup()    // Declares new pop-up on each click
+        .setLngLat(e.lngLat)    //Coordinates of the mouse click to determine the coordinates of the pop-up
+        .setHTML("<b>Station Name: </b>" + e.features[0].properties.LOCATION_N) // Shows subway station name in pop-up
+        .addTo(map); // Adds pop-up to map
+});
