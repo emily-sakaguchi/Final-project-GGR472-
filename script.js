@@ -119,7 +119,7 @@ map.on('load', () => {
     /*--------------------------------------------------------------------
     LOADING GEOJSON FROM GITHUB
     --------------------------------------------------------------------*/
-    map.addSource('cafesjson',{
+   map.addSource('cafesjson',{
     'type': 'geojson', //geojson format will allow me to execute future GIS analysis on this same data using Turf.js
     'data': 'https://raw.githubusercontent.com/emily-sakaguchi/lab_3/main/CafeTO%20parklet.geojson' //link to the github raw data
     })
@@ -135,6 +135,7 @@ map.on('load', () => {
         }
     });
 });
+
 
 /*--------------------------------------------------------------------
 LEGEND
@@ -244,3 +245,14 @@ map.on('click', 'neighbourhoods-fill', (e) => {
             "<b>Improvment status:</b> " + e.features[0].properties.CLASSIFICATION) //shows neighbourhood improvement status
         .addTo(map); //Adds the popup to the map
 })
+
+/*--------------------------------------------------------------------
+SCROLL BUTTON
+- When the button is clicked, the page will scroll down to more infomration
+--------------------------------------------------------------------*/
+
+var button1 = document.getElementById("btn1"); 
+
+button.addEventListener("click", function() {
+    sc2.scrollIntoView();
+});

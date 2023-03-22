@@ -70,3 +70,52 @@ However, as this map evolves for my final project, I may wish to add a header an
     width: 10px;
     margin-right: 5px; /*circle position*/
 }
+
+/*About page styling*/
+
+
+.centered {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color:black;
+    opacity: 0.8;
+}
+h1 {
+    color:whitesmoke;
+    font-family: serif;
+    font-size: 70px;
+    font-weight: bold;
+}
+
+h2 {
+    color:whitesmoke;
+    font-size:large
+}
+
+.btn {
+    background-color: transparent; 
+    color: whitesmoke; 
+    border-color: gray;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+  
+.btn:hover {
+background-color: whitesmoke;
+    color: black;
+}
