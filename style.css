@@ -101,7 +101,7 @@ h2 {
     font-size:large
 }
 
-.btn {
+.btn1 {
     background-color: transparent; 
     color: whitesmoke; 
     border-color: gray;
@@ -115,7 +115,57 @@ h2 {
     cursor: pointer;
 }
   
-.btn:hover {
+.btn1:hover {
 background-color: whitesmoke;
     color: black;
+}
+
+/*News page styling*/
+
+.head-section {
+   
+}
+
+.container {
+    width: 80%;
+}
+
+.row {
+    margin-top: 20px;
+}
+.card-img-top {
+    width: 100%;  /*width of container */
+    height: 200px; /* height of container */
+    object-fit: cover;
+}
+
+.card-body {
+    height: 210px
+}
+
+.card-text {
+    position: absolute;
+    bottom: 5%;
+    color: gray;
+    font-style: italic;
+}
+
+.btn-news {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight:bold;
+    font-size:x-large;
+    text-align:left;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    border-radius: 12px
+}
+
+.btn-news:hover {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight:bold;
+    font-size: x-large;
+    text-align:left;
+    text-decoration: none;
+    color: slategrey;
 }
