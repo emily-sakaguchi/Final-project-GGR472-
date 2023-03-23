@@ -410,11 +410,11 @@ SCROLL BUTTON
 - When the button is clicked, the page will scroll down to more infomration
 --------------------------------------------------------------------*/
 
-var button1 = document.getElementById("btn1"); 
+// var button1 = document.getElementById("#btn1"); 
 
-button1.addEventListener("click", function() {
-    sc2.scrollIntoView();
-});
+// button1.addEventListener("click", function() {
+//     sc2.scrollIntoView();
+// });
 
 map.on('mouseenter', 'bus-routes', () => {
     map.getCanvas().style.cursor = 'pointer';   //Switches cursor to pointer when mouse is over a subway station point
