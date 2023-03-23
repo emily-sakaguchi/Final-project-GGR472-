@@ -166,7 +166,7 @@ map.on('load', () => {
     /*--------------------------------------------------------------------
     LOADING GEOJSON FROM GITHUB
     --------------------------------------------------------------------*/
-   map.addSource('cafesjson',{
+    map.addSource('cafesjson',{
     'type': 'geojson', //geojson format will allow me to execute future GIS analysis on this same data using Turf.js
     'data': 'https://raw.githubusercontent.com/emily-sakaguchi/lab_3/main/CafeTO%20parklet.geojson' //link to the github raw data
     })
@@ -181,6 +181,43 @@ map.on('load', () => {
             'circle-color':'blue'
         }
     });
+
+    //Create empty featurecollection for buffers
+    buffresult = {
+        "type": "FeatureCollection",
+        "features": []
+    };
+
+    //Loop through each point in geojson and use turf buffer function to create 0.5km buffer of input points
+    //Add buffer polygons to buffresult feature collection
+    subway-stns.features.forEach((feature) => {
+        let buffer = turf.buffer(feature, 0.5, {units: 'kilometers'});
+        buffresult.features.push(buffer);
+    });
+
+    map.addSource('buffgeojson', {
+        "type": "geojson",
+        "data": buffresult  //use buffer geojson variable as data source
+    });
+
+    //Show buffers on map using styling
+    map.addLayer({
+        "id": "subwaybuff",
+        "type": "fill",
+        "source": "buffgeojson",
+        "paint": {
+            'fill-color': "black",
+            'fill-opacity': 0.5,
+            'fill-outline-color': "black"
+        }
+    });
+
+    // Turns off subway buffers layer by default
+    map.setLayoutProperty(
+        'subwaybuff',
+        'visibility',
+        'none'
+    );
 });
 
 
@@ -288,6 +325,15 @@ document.getElementById('busCheck').addEventListener('change', (e) => {
     );
 });
 
+// Subway station buffer layer display (check box)
+document.getElementById('buffCheck').addEventListener('change', (e) => {
+    map.setLayoutProperty(
+        'subwaybuff',
+        'visibility',
+        e.target.checked ? 'visible' : 'none'
+    );
+});
+
 
 /*--------------------------------------------------------------------
 POP-UP ON CLICK EVENT
@@ -309,7 +355,6 @@ map.on('click', 'neighbourhoods-fill', (e) => {
         .setHTML("<b>Neighbourhood Name:</b> " + e.features[0].properties.AREA_NAME + "<br>" +// shows neighbourhood name
             "<b>Improvment Status:</b> " + e.features[0].properties.CLASSIFICATION) //shows neighbourhood improvement status
         .addTo(map); //Adds the popup to the map
-})
 });
 
 
