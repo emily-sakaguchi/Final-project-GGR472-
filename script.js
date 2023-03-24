@@ -309,7 +309,6 @@ map.on('click', 'neighbourhoods-fill', (e) => {
         .setHTML("<b>Neighbourhood Name:</b> " + e.features[0].properties.AREA_NAME + "<br>" +// shows neighbourhood name
             "<b>Improvment Status:</b> " + e.features[0].properties.CLASSIFICATION) //shows neighbourhood improvement status
         .addTo(map); //Adds the popup to the map
-})
 });
 
 
@@ -327,15 +326,4 @@ map.on('click', 'subway-stations', (e) => {
         .setLngLat(e.lngLat)    //Coordinates of the mouse click to determine the coordinates of the pop-up
         .setHTML("<b>Station Name: </b>" + e.features[0].properties.LOCATION_N) // Shows subway station name in pop-up
         .addTo(map); // Adds pop-up to map
-});
-
-/*--------------------------------------------------------------------
-SCROLL BUTTON
-- When the button is clicked, the page will scroll down to more infomration
---------------------------------------------------------------------*/
-
-var button1 = document.getElementById("btn1"); 
-
-button.addEventListener("click", function() {
-    sc2.scrollIntoView();
 });
