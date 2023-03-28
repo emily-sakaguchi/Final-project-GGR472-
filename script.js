@@ -100,10 +100,9 @@ map.on('load', () => {
         'filter': ['==', ['get', '_id'], ''] //Initial filter (returns nothing)
     });
 
-
     map.addSource('subway-stns',{
         type: 'geojson',
-        data: 'https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/main/subway-stations.geojson' 
+        data: 'https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/main/subway-stations.geojson'
     });
 
     // Adds subway stations layer to map
@@ -123,7 +122,6 @@ map.on('load', () => {
         'visibility',
         'none'
     );
-
 
     map.addSource('ttcbusroutes',{
         type: 'geojson',
