@@ -176,7 +176,11 @@ h5 {
     text-decoration: none;
     color: black;
     background-color: white;
-    border-radius: 12%
+    border-radius: 12%;
+    /*text-overflow: ellipsis;
+    /* Required for text-overflow to do anything */
+   /* white-space: nowrap;
+    overflow: hidden;*/
 }
 
 .btn-news:hover {

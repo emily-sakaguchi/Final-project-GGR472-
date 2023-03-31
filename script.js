@@ -139,21 +139,9 @@ map.on('load', () => {
     // Creates 1km buffers around each subway station point
     let buffer = turf.buffer(substns, 1, {units: 'kilometers'}); 
 
-    // Create GeoJSON of all buffered subway station feature points
-    let buffersgeojson = {
-        'type': 'FeatureCollection',
-        'features': [buffer]
-    };
-
-    // Add buffer polygons to GeoJSON
-    buffer.features.forEach((feature) => {
-        // let buffer = turf.buffer(subway-stns, 0.5);
-        buffersgeojson.features.push(buffer);
-    });
-
     map.addSource('buffer-stns', {
         'type': 'geojson',
-        'data': buffersgeojson
+        'data': buffer
     });
 
     // Add subway buffers as a layer to map
