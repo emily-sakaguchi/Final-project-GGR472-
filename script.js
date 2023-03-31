@@ -136,13 +136,36 @@ map.on('load', () => {
         'type': 'line',
         'source': 'ttcbusroutes',
         'paint': {
-            'line-color': '#B42222'
+            'line-color': '#B42222',
+            'line-width': 1.5
         }
     });
     
     // Turns off bus routes layer by default
     map.setLayoutProperty(
         'bus-routes',
+        'visibility',
+        'none'
+    );
+
+    map.addSource('cycling-network',{
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/cycling-layer/cycling-network.geojson' 
+    });
+
+    // Adds cycling network layer to map
+    map.addLayer({
+        'id': 'cycling',
+        'type': 'line',
+        'source': 'cycling-network',
+        'paint': {
+            'line-color': '#b45bf5'
+        }
+    });
+    
+    // Turns off cycling network layer by default
+    map.setLayoutProperty(
+        'cycling',
         'visibility',
         'none'
     );
@@ -334,6 +357,15 @@ document.getElementById('buffCheck').addEventListener('change', (e) => {
     );
 });
 
+// Cycling network layer display (check box)
+document.getElementById('bikeCheck').addEventListener('change', (e) => {
+    map.setLayoutProperty(
+        'cycling',
+        'visibility',
+        e.target.checked ? 'visible' : 'none'
+    );
+});
+
 
 /*--------------------------------------------------------------------
 POP-UP ON CLICK EVENT
@@ -357,7 +389,6 @@ map.on('click', 'neighbourhoods-fill', (e) => {
         .addTo(map); //Adds the popup to the map
 });
 
-
 map.on('mouseenter', 'subway-stations', () => {
     map.getCanvas().style.cursor = 'pointer';   //Switches cursor to pointer when mouse is over a subway station point
 });
@@ -373,3 +404,46 @@ map.on('click', 'subway-stations', (e) => {
         .setHTML("<b>Station Name: </b>" + e.features[0].properties.LOCATION_N) // Shows subway station name in pop-up
         .addTo(map); // Adds pop-up to map
 });
+
+/*--------------------------------------------------------------------
+SCROLL BUTTON
+- When the button is clicked, the page will scroll down to more infomration
+--------------------------------------------------------------------*/
+
+// var button1 = document.getElementById("#btn1"); 
+
+// button1.addEventListener("click", function() {
+//     sc2.scrollIntoView();
+// });
+
+map.on('mouseenter', 'bus-routes', () => {
+    map.getCanvas().style.cursor = 'pointer';   //Switches cursor to pointer when mouse is over a subway station point
+});
+
+map.on('mouseleave', 'bus-routes', () => {
+    map.getCanvas().style.cursor = '';  //Switches cursor back when mouse leaves subway station point
+
+});
+
+
+map.on('click', 'bus-routes', (e) => {
+    
+    // Variable assigned 'If else' statement so that undefined branches show up as blank instead of "undefined" in the pop-ups
+    let routeBranch = e.features[0].properties.BRANCH;
+        if (e.features[0].properties.BRANCH === undefined) {
+            routeBranch = " ";
+        } else {
+            routeBranch = e.features[0].properties.BRANCH
+        };
+
+    console.log(routeBranch);
+
+    new mapboxgl.Popup()    // Declares new pop-up on each click
+        .setLngLat(e.lngLat)    //Coordinates of the mouse click to determine the coordinates of the pop-up
+        .setHTML(
+            "<b>Bus Number: </b>" + e.features[0].properties.NUMBER + routeBranch + " " + e.features[0].properties.ROUTE +
+            "<br>" + "<b>Route: </b>" + e.features[0].properties.OD) // Shows bus number and route in pop-up
+        .addTo(map); // Adds pop-up to map
+    
+});
+
