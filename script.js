@@ -136,8 +136,8 @@ map.on('load', () => {
         'none'
     );
 
-    // Creates 1km buffers around each subway station point
-    let buffer = turf.buffer(substns, 1, {units: 'kilometers'}); 
+    // Creates 500 metre buffers around each subway station point
+    let buffer = turf.buffer(substns, 0.5, {units: 'kilometers'}); 
 
     map.addSource('buffer-stns', {
         'type': 'geojson',
@@ -156,6 +156,12 @@ map.on('load', () => {
         }
     });
 
+    // Turns off subway buffers layer by default
+    map.setLayoutProperty(
+         'subwaystn-buff',
+         'visibility',
+         'none'
+     );
 
     map.addSource('ttcbusroutes',{
         type: 'geojson',
