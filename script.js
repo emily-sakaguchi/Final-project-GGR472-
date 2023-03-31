@@ -48,6 +48,18 @@ DATA
 - I will be looking at neighbourhood improvement areas, a municipal designation that guides planning decisions
 --------------------------------------------------------------------*/
 
+// Empty variable for subway stations
+let substns;
+
+// Fetch GeoJSON from github URL, convert response to JSON, and store response as variable 
+fetch('https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/main/subway-stations.geojson')
+    .then(response => response.json())      // Store response as JSON format
+    .then(response => {
+        console.log(response);      // Check response in console
+        substns = response;       // Store GeoJSON as "substns" variable
+    });
+    
+
 map.on('load', () => {
     map.addSource('neighbourhoodsTO', {
         'type': 'vector',
@@ -123,6 +135,38 @@ map.on('load', () => {
         'visibility',
         'none'
     );
+
+    // Creates 1km buffers around each subway station point
+    let buffer = turf.buffer(substns, 1, {units: 'kilometers'}); 
+
+    // Create GeoJSON of all buffered subway station feature points
+    let buffersgeojson = {
+        'type': 'FeatureCollection',
+        'features': [buffer]
+    };
+
+    // Add buffer polygons to GeoJSON
+    buffer.features.forEach((feature) => {
+        // let buffer = turf.buffer(subway-stns, 0.5);
+        buffersgeojson.features.push(buffer);
+    });
+
+    map.addSource('buffer-stns', {
+        'type': 'geojson',
+        'data': buffersgeojson
+    });
+
+    // Add subway buffers as a layer to map
+    map.addLayer({
+        'id': 'subwaystn-buff',
+        'type': 'fill',
+        'source': 'buffer-stns',
+        'paint': {
+            'fill-color': 'blue',
+            'fill-opacity': 0.5,
+            'fill-outline-color': 'black'
+        }
+    });
 
 
     map.addSource('ttcbusroutes',{
@@ -206,41 +250,41 @@ map.on('load', () => {
     });
 
     //Create empty featurecollection for buffers
-    buffresult = {
-        "type": "FeatureCollection",
-        "features": []
-    };
+    // buffresult = {
+    //     "type": "FeatureCollection",
+    //     "features": []
+    // };
 
     //Loop through each point in geojson and use turf buffer function to create 0.5km buffer of input points
     //Add buffer polygons to buffresult feature collection
-    subway-stns.features.forEach((feature) => {
-        let buffer = turf.buffer(feature, 0.5, {units: 'kilometers'});
-        buffresult.features.push(buffer);
-    });
+    // subway-stns.features.forEach((feature) => {
+    //     let buffer = turf.buffer(feature, 0.5, {units: 'kilometers'});
+    //     buffresult.features.push(buffer);
+    // });
 
-    map.addSource('buffgeojson', {
-        "type": "geojson",
-        "data": buffresult  //use buffer geojson variable as data source
-    });
+    // map.addSource('buffgeojson', {
+    //     "type": "geojson",
+    //     "data": buffresult  //use buffer geojson variable as data source
+    // });
 
     //Show buffers on map using styling
-    map.addLayer({
-        "id": "subwaybuff",
-        "type": "fill",
-        "source": "buffgeojson",
-        "paint": {
-            'fill-color': "black",
-            'fill-opacity': 0.5,
-            'fill-outline-color': "black"
-        }
-    });
+    // map.addLayer({
+    //     "id": "subwaybuff",
+    //     "type": "fill",
+    //     "source": "buffgeojson",
+    //     "paint": {
+    //         'fill-color': "black",
+    //         'fill-opacity': 0.5,
+    //         'fill-outline-color': "black"
+    //     }
+    // });
 
     // Turns off subway buffers layer by default
-    map.setLayoutProperty(
-        'subwaybuff',
-        'visibility',
-        'none'
-    );
+    // map.setLayoutProperty(
+    //     'subwaybuff',
+    //     'visibility',
+    //     'none'
+    // );
 });
 
 
@@ -348,19 +392,19 @@ document.getElementById('busCheck').addEventListener('change', (e) => {
     );
 });
 
-// Subway station buffer layer display (check box)
-document.getElementById('buffCheck').addEventListener('change', (e) => {
+// Cycling network layer display (check box)
+document.getElementById('bikeCheck').addEventListener('change', (e) => {
     map.setLayoutProperty(
-        'subwaybuff',
+        'cycling',
         'visibility',
         e.target.checked ? 'visible' : 'none'
     );
 });
 
-// Cycling network layer display (check box)
-document.getElementById('bikeCheck').addEventListener('change', (e) => {
+// Subway station buffer layer display (check box)
+document.getElementById('buffCheck').addEventListener('change', (e) => {
     map.setLayoutProperty(
-        'cycling',
+        'subwaystn-buff',
         'visibility',
         e.target.checked ? 'visible' : 'none'
     );
