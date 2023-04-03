@@ -48,8 +48,20 @@ DATA
 - I will be looking at neighbourhood improvement areas, a municipal designation that guides planning decisions
 --------------------------------------------------------------------*/
 
+// Empty variable for subway stations
+let substns;
+
+// Fetch GeoJSON from github URL, convert response to JSON, and store response as variable 
+fetch('https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/main/subway-stations.geojson')
+    .then(response => response.json())      // Store response as JSON format
+    .then(response => {
+        console.log(response);      // Check response in console
+        substns = response;       // Store GeoJSON as "substns" variable
+    });
+    
+
 map.on('load', () => {
-    map.addSource('neighbourhoodsTO', {
+   /* map.addSource('neighbourhoodsTO', {
         'type': 'vector',
         'url': 'mapbox://emilysakaguchi.bsiq2wyk' 
     });
@@ -99,13 +111,109 @@ map.on('load', () => {
         'source-layer': 'Neighbourhoods-90ored',
         'filter': ['==', ['get', '_id'], ''] //Initial filter (returns nothing)
     });
+*/
+
+    map.addSource('subway-stns',{
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/main/subway-stations.geojson' 
+    });
+
+    // Adds subway stations layer to map
+    map.addLayer({
+        'id': 'subway-stations',
+        'type': 'circle',
+        'source': 'subway-stns',
+        'paint': {
+            'circle-radius': 4,
+            'circle-color': '#B42222'
+        }
+    });
+    
+    // Turns off subway station layer by default
+    map.setLayoutProperty(
+        'subway-stations',
+        'visibility',
+        'none'
+    );
+
+    // Creates 500 metre buffers around each subway station point
+    let buffer = turf.buffer(substns, 0.5, {units: 'kilometers'}); 
+
+    map.addSource('buffer-stns', {
+        'type': 'geojson',
+        'data': buffer
+    });
+
+    // Add subway buffers as a layer to map
+    map.addLayer({
+        'id': 'subwaystn-buff',
+        'type': 'fill',
+        'source': 'buffer-stns',
+        'paint': {
+            'fill-color': 'blue',
+            'fill-opacity': 0.5,
+            'fill-outline-color': 'black'
+        }
+    });
+
+    // Turns off subway buffers layer by default
+    map.setLayoutProperty(
+         'subwaystn-buff',
+         'visibility',
+         'none'
+     );
+
+    map.addSource('ttcbusroutes',{
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/main/BusRoutes_Toronto.geojson' 
+    });
+
+    // Adds bus routes layer to map
+    map.addLayer({
+        'id': 'bus-routes',
+        'type': 'line',
+        'source': 'ttcbusroutes',
+        'paint': {
+            'line-color': '#B42222',
+            'line-width': 1.5
+        }
+    });
+    
+    // Turns off bus routes layer by default
+    map.setLayoutProperty(
+        'bus-routes',
+        'visibility',
+        'none'
+    );
+
+    map.addSource('cycling-network',{
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/cycling-layer/cycling-network.geojson' 
+    });
+
+    // Adds cycling network layer to map
+    map.addLayer({
+        'id': 'cycling',
+        'type': 'line',
+        'source': 'cycling-network',
+        'paint': {
+            'line-color': '#b45bf5'
+        }
+    });
+    
+    // Turns off cycling network layer by default
+    map.setLayoutProperty(
+        'cycling',
+        'visibility',
+        'none'
+    );
 
 
     /*--------------------------------------------------------------------
     HOVER EVENT
     - if a neighbourhood polygon is under the mouse hover, it will turn opaque
     --------------------------------------------------------------------*/
-
+/*
     map.on('mousemove', 'neighbourhoods-fill', (e) => {
         if (e.features.length > 0) { //determines if there is a feature under the mouse
             map.setFilter('neighbourhoods-opaque', ['==', ['get', '_id'], e.features[0].properties._id]); //applies the filter set above
@@ -115,7 +223,7 @@ map.on('load', () => {
     map.on('mouseleave', 'neighbourhoods-opaque', () => { //removes the highlight when the mouse moves away
         map.setFilter("neighbourhoods-opaque",['==', ['get', '_id'], '']);
     });
-
+*/
     /*--------------------------------------------------------------------
     LOADING GEOJSON FROM GITHUB
     --------------------------------------------------------------------*/
@@ -134,7 +242,142 @@ map.on('load', () => {
             'circle-color':'blue'
         }
     });
-});
+
+let neighbourhoodsjson; //empty variable to store the neighbourhood GeoJSON data
+
+//below I use the fecth method to access the GeoJSON from the online GitHub repository
+fetch('https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/main/Final_clean_neighbourhoods140.geojson')
+    .then(response => response.json()) // Converts the response to JSON format  
+    .then(response => {
+        console.log(response); //Checking the response in console
+        neighbourhoodsjson = response; // Stores the response in the variable created above
+    });
+
+map.on('load', () => {
+    map.addSource('neighbourhoodsTO_geojson', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/main/Final_clean_neighbourhoods140.geojson'
+    });
+
+    map.addLayer({
+        'id': 'neighbourhoods-fill',
+        'type': 'fill',
+        'source': 'neighbourhoodsTO_geojson',
+        'paint': {
+            'fill-color': [
+              'match', //this allows for categorical colour values
+              ['get', 'TSNS2020_Designation'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
+              'No Designation',
+              '#99e600', //lime green
+              'NIA', 
+              '#F7d125', //soft red
+              'Emerging Neighbourhood',
+              '#Ff6700', //neutral yellow
+              'grey'
+              ],
+            'fill-opacity': 0.5, //Opacity set to 50%
+            'fill-outline-color': 'white'
+        },
+    });
+  
+    //The same polygon layers of neighbouroods with different visualization (for the hover event)
+    map.addLayer({
+        'id': 'neighbourhoods-opaque', //New ID for the highlighted layer
+        'type': 'fill',
+        'source': 'neighbourhoodsTO_geojson',
+        'paint': {
+            'fill-color': [
+                'match', //this allows for categorical colour values
+                ['get', 'TSNS2020_Designation'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
+                'No Designation',
+                '#99e600', //lime green
+                'NIA', 
+                '#F7d125', //soft red
+                'Emerging Neighbourhood',
+                '#Ff6700', //neutral yellow,
+                'grey'
+                ],
+            'fill-opacity': 1, //Opacity set to 100%
+            'fill-outline-color': 'white'
+        },
+        'filter': ['==', ['get', '_id'], ''] //Initial filter (returns nothing)
+    });
+
+    map.addLayer({
+        'id':'neighb_income',
+        'type': 'fill',
+        'source': 'neighbourhoodsTO_geojson',
+        'paint': {
+            'fill-color': [
+                'step', //this allows for ramped colour values
+                ['get', 'Total_income__Average_amount___'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
+                0, 'grey',
+                25989, '#99e600', //lime green
+                33974, 'green',
+                44567, '#F7d125', //soft red
+                56911, '#Ff6700', //neutral yellow
+                89330, 'red'
+                ],
+            'fill-opacity': 1, //Opacity set to 100%
+            'fill-outline-color': 'white'
+        },
+    });
+
+
+    map.addLayer({
+        'id':'neighb_pop_dens',
+        'type': 'fill',
+        'source': 'neighbourhoodsTO_geojson',
+        'paint': {
+            'fill-color': [
+                'step', //this allows for categorical colour values
+                ['get', 'Population_density_per_square_k'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
+                0, 'grey', // Colours assigned to values >= each step is a quintile
+                1040, //lime green
+                3594, '#Ff6700', //neutral yellow
+                5072, '#F7d125', //soft red
+                7662, 'red',
+                12,859, 'black'
+                ],
+            'fill-opacity': 1, //Opacity set to 100%
+            'fill-outline-color': 'white'
+        },
+    });
+    })
+
+      // Turns off income layer by default
+      map.setLayoutProperty(
+        'neighb_pop_dens',
+        'visibility',
+        'none'
+    );
+
+    map.addLayer({
+        'id':'neighb_disability',
+        'type': 'fill',
+        'source': 'neighbourhoodsTO_geojson',
+        'paint': {
+            'fill-color': [
+                'step', //this allows for visualization of the continuous data by grouping values
+                ['get', 'PP_QPP_Disability_benefits__Av'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
+                0, 'grey', // Colours assigned to values >= each step is a quintile
+                8000, //lime green
+                9980, '#Ff6700', //neutral yellow
+                1120, '#F7d125', //soft red
+                13808, 'red'
+                ],
+            'fill-opacity': 1, //Opacity set to 100%
+            'fill-outline-color': 'white'
+        },
+    });
+
+      // Turns off income layer by default
+      map.setLayoutProperty(
+        'neighb_disability',
+        'visibility',
+        'none'
+    );
+    });
 
 /*--------------------------------------------------------------------
 LEGEND
@@ -179,7 +422,7 @@ legendlabels.forEach((label, i) => {
 
 /*--------------------------------------------------------------------
 INTERACTIVITY
-- check boxes and buttons
+- check boxes, filters, and buttons
 --------------------------------------------------------------------*/
 
 //event listener to return map view to full screen on button click
@@ -222,6 +465,65 @@ document.getElementById('layercheck').addEventListener('change', (e) => {
     );
 });
 
+// Subway stations layer display (check box)
+document.getElementById('subwayCheck').addEventListener('change', (e) => {
+    map.setLayoutProperty(
+        'subway-stations',
+        'visibility',
+        e.target.checked ? 'visible' : 'none'
+    );
+});
+
+// Bus routes layer display (check box)
+document.getElementById('busCheck').addEventListener('change', (e) => {
+    map.setLayoutProperty(
+        'bus-routes',
+        'visibility',
+        e.target.checked ? 'visible' : 'none'
+    );
+});
+
+// Cycling network layer display (check box)
+document.getElementById('bikeCheck').addEventListener('change', (e) => {
+    map.setLayoutProperty(
+        'cycling',
+        'visibility',
+        e.target.checked ? 'visible' : 'none'
+    );
+});
+
+// Subway station buffer layer display (check box)
+document.getElementById('buffCheck').addEventListener('change', (e) => {
+    map.setLayoutProperty(
+        'subwaystn-buff',
+        'visibility',
+        e.target.checked ? 'visible' : 'none'
+    );
+});
+
+// Filter for neighbourhood variable
+
+let neighbourhoodvalue;
+
+document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) => {   
+    neighbourhoodvalue = document.getElementById('neighbourhood').value;
+
+    console.log(neighbourhoodvalue);
+
+    if (neighbourhoodvalue == 'All') {
+        map.setFilter(
+            'provterr-fill',
+            ['has', 'PRENAME'] //returns all polygons from layer that have a value in PRENAME field
+        );
+    } else {
+        map.setFilter(
+            'provterr-fill',
+            ['==', ['get', 'PRENAME'], neighbourhoodvalue] //returns polygon with PRENAME value that matches dropdown selection
+        );
+    }
+
+});
+
 /*--------------------------------------------------------------------
 POP-UP ON CLICK EVENT
 - When the cursor moves over the map, it changes from the default hand to a pointer
@@ -235,12 +537,61 @@ map.on('mouseleave', 'neighbourhoods-fill', () => {
     map.getCanvas().style.cursor = ''; //Switches cursor back when mouse leaves neighbourhood-fill layer
 });
 
-
 map.on('click', 'neighbourhoods-fill', (e) => {
     new mapboxgl.Popup() //Declares a new popup on each click
         .setLngLat(e.lngLat) //Coordinates of the mouse click to determine the coordinates of the pop-up
         //Text for the pop-up:
-        .setHTML("<b>Neighbourhood name:</b> " + e.features[0].properties.AREA_NAME + "<br>" +// shows neighbourhood name
-            "<b>Improvment status:</b> " + e.features[0].properties.CLASSIFICATION) //shows neighbourhood improvement status
+        .setHTML("<b>Neighbourhood Name:</b> " + e.features[0].properties.AREA_NAME + "<br>" +// shows neighbourhood name
+            "<b>Improvment Status:</b> " + e.features[0].properties.CLASSIFICATION) //shows neighbourhood improvement status
         .addTo(map); //Adds the popup to the map
-})
+});
+
+map.on('mouseenter', 'subway-stations', () => {
+    map.getCanvas().style.cursor = 'pointer';   //Switches cursor to pointer when mouse is over a subway station point
+});
+
+map.on('mouseleave', 'subway-stations', () => {
+    map.getCanvas().style.cursor = '';  //Switches cursor back when mouse leaves subway station point
+
+});
+
+map.on('click', 'subway-stations', (e) => {
+    new mapboxgl.Popup()    // Declares new pop-up on each click
+        .setLngLat(e.lngLat)    //Coordinates of the mouse click to determine the coordinates of the pop-up
+        .setHTML("<b>Station Name: </b>" + e.features[0].properties.LOCATION_N) // Shows subway station name in pop-up
+        .addTo(map); // Adds pop-up to map
+});
+
+
+
+map.on('mouseenter', 'bus-routes', () => {
+    map.getCanvas().style.cursor = 'pointer';   //Switches cursor to pointer when mouse is over a subway station point
+});
+
+map.on('mouseleave', 'bus-routes', () => {
+    map.getCanvas().style.cursor = '';  //Switches cursor back when mouse leaves subway station point
+
+});
+
+
+map.on('click', 'bus-routes', (e) => {
+    
+    // Variable assigned 'If else' statement so that undefined branches show up as blank instead of "undefined" in the pop-ups
+    let routeBranch = e.features[0].properties.BRANCH;
+        if (e.features[0].properties.BRANCH === undefined) {
+            routeBranch = " ";
+        } else {
+            routeBranch = e.features[0].properties.BRANCH
+        };
+
+    console.log(routeBranch);
+
+    new mapboxgl.Popup()    // Declares new pop-up on each click
+        .setLngLat(e.lngLat)    //Coordinates of the mouse click to determine the coordinates of the pop-up
+        .setHTML(
+            "<b>Bus Number: </b>" + e.features[0].properties.NUMBER + routeBranch + " " + e.features[0].properties.ROUTE +
+            "<br>" + "<b>Route: </b>" + e.features[0].properties.OD) // Shows bus number and route in pop-up
+        .addTo(map); // Adds pop-up to map
+    
+});
+
