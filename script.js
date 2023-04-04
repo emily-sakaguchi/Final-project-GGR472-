@@ -59,6 +59,14 @@ fetch('https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/m
         substns = response;       // Store GeoJSON as "substns" variable
     });
     
+let neighbourhoodsjson;
+
+    fetch('https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/main/Final_clean_neighbourhoods140.geojson')
+    .then(response => response.json()) // Converts the response to JSON format  
+    .then(response => {
+        console.log(response); //Checking the response in console
+        neighbourhoodsjson = response; // Stores the response in the variable created above
+    });
 
 map.on('load', () => {
 
@@ -78,6 +86,23 @@ map.on('load', () => {
         }
     });
     
+    map.addSource('neighbourhoodsTO_geojson', {
+        type: 'geojson',
+        data: neighbourhoodsjson
+    });
+
+    map.addLayer({
+        'id': 'neighbourhoods-fill',
+        'type': 'fill',
+        'source': 'neighbourhoodsTO_geojson',
+        'paint': {
+            'fill-color': 'black',
+            'fill-opacity': 0.5, //Opacity set to 50%
+            'fill-outline-color': 'white',
+            
+        },
+    });
+
     // Turns off subway station layer by default
     map.setLayoutProperty(
         'subway-stations',
@@ -157,154 +182,6 @@ map.on('load', () => {
         'none'
     );
 
-    fetch('https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/main/Final_clean_neighbourhoods140.geojson')
-    .then(response => response.json()) // Converts the response to JSON format  
-    .then(response => {
-        console.log(response); //Checking the response in console
-        neighbourhoodsjson = response; // Stores the response in the variable created above
-    });
-
-    map.addSource('neighbourhoodsTO_geojson', {
-        type: 'geojson',
-        data: 'https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/main/Final_clean_neighbourhoods140.geojson'
-    });
-
-    map.addLayer({
-        'id': 'neighbourhoods-fill',
-        'type': 'fill',
-        'source': 'neighbourhoodsTO_geojson',
-        'paint': {
-            'fill-color': [
-              'match', //this allows for categorical colour values
-              ['get', 'TSNS2020_Designation'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
-              'No Designation',
-              '#99e600', //lime green
-              'NIA', 
-              '#F7d125', //soft red
-              'Emerging Neighbourhood',
-              '#Ff6700', //neutral yellow
-              'grey'
-              ],
-            'fill-opacity': 0.5, //Opacity set to 50%
-            'fill-outline-color': 'white'
-        },
-    });
-  
-    //The same polygon layers of neighbouroods with different visualization (for the hover event)
-    map.addLayer({
-        'id': 'neighbourhoods-opaque', //New ID for the highlighted layer
-        'type': 'fill',
-        'source': 'neighbourhoodsTO_geojson',
-        'paint': {
-            'fill-color': [
-                'match', //this allows for categorical colour values
-                ['get', 'TSNS2020_Designation'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
-                'No Designation',
-                '#99e600', //lime green
-                'NIA', 
-                '#F7d125', //soft red
-                'Emerging Neighbourhood',
-                '#Ff6700', //neutral yellow,
-                'grey'
-                ],
-            'fill-opacity': 1, //Opacity set to 100%
-            'fill-outline-color': 'white'
-        },
-        'filter': ['==', ['get', '_id'], ''] //Initial filter (returns nothing)
-    });
-
-    map.addLayer({
-        'id':'neighb_income',
-        'type': 'fill',
-        'source': 'neighbourhoodsTO_geojson',
-        'paint': {
-            'fill-color': [
-                'step', //this allows for ramped colour values
-                ['get', 'Total_income__Average_amount___'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
-                'black',
-                0, 'grey',
-                25989, '#99e600', //lime green
-                33974, 'green',
-                44567, '#F7d125', //soft red
-                56911, '#Ff6700', //neutral yellow
-                89330, 'red'
-                ],
-            'fill-opacity': 1, //Opacity set to 100%
-            'fill-outline-color': 'white'
-        },
-    });
-
-    map.addLayer({
-        'id':'neighb_pop_dens',
-        'type': 'fill',
-        'source': 'neighbourhoodsTO_geojson',
-        'paint': {
-            'fill-color': [
-                'step', //this allows for categorical colour values
-                ['get', 'Population_density_per_square_k'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
-                'white',
-                0, 'grey', // Colours assigned to values >= each step is a quintile
-                1040, 'green', //lime green
-                3594, '#Ff6700', //neutral yellow
-                5072, '#F7d125', //soft red
-                7662, 'red',
-                12859, 'black'
-                ],
-            'fill-opacity': 1, //Opacity set to 100%
-            'fill-outline-color': 'white'
-        },
-    });
-    })
-
-      // Turns off income layer by default
-      map.setLayoutProperty(
-        'neighb_pop_dens',
-        'visibility',
-        'none'
-    );
-
-    map.addLayer({
-        'id':'neighb_disability',
-        'type': 'fill',
-        'source': 'neighbourhoodsTO_geojson',
-        'paint': {
-            'fill-color': [
-                'step', //this allows for visualization of the continuous data by grouping values
-                ['get', 'PP_QPP_Disability_benefits__Av'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
-                0, 'grey', // Colours assigned to values >= each step is a quintile
-                8000, //lime green
-                9980, '#Ff6700', //neutral yellow
-                1120, '#F7d125', //soft red
-                13808, 'red'
-                ],
-            'fill-opacity': 1, //Opacity set to 100%
-            'fill-outline-color': 'white'
-        },
-    });
-
-      // Turns off income layer by default
-      map.setLayoutProperty(
-        'neighb_disability',
-        'visibility',
-        'none'
-    );
-
-
-    /*--------------------------------------------------------------------
-    HOVER EVENT
-    - if a neighbourhood polygon is under the mouse hover, it will turn opaque
-    --------------------------------------------------------------------*/
-
-    map.on('mousemove', 'neighbourhoods-fill', (e) => {
-        if (e.features.length > 0) { //determines if there is a feature under the mouse
-            map.setFilter('neighbourhoods-opaque', ['==', ['get', '_id'], e.features[0].properties._id]); //applies the filter set above
-        }
-    });
-    
-    map.on('mouseleave', 'neighbourhoods-opaque', () => { //removes the highlight when the mouse moves away
-        map.setFilter("neighbourhoods-opaque",['==', ['get', '_id'], '']);
-    });
-
     /*--------------------------------------------------------------------
     LOADING GEOJSON FROM GITHUB
     --------------------------------------------------------------------*/
@@ -323,22 +200,7 @@ map.on('load', () => {
             'circle-color':'blue'
         }
     });
-    
-    //the Turf collect function is used below to collect the unique '_id' properties from the collision points data for each hexagon
-    //the result of the function is stored in a variable called collishex
-    let patio_neighb = turf.collect(neighbourhoodsjson, 'cafe-parklets', '_id', 'values');
-    console.log(collishex) //Viewing the collect output in the console
-
-let patio_count = 0; //a variable to store the maximum count of collisions in a given cell
-
-//below is a conditional statment to find the maximum collision count in any given hexagon
-collishex.features.forEach((feature) => {
-    feature.properties.COUNT = feature.properties.values.length
-    if (feature.properties.COUNT > patio_count) { //this line tests if the count in a hexagon exceeds the maximum count found up to that point
-        console.log(feature); //Allows me to view the process of determining the macimum count in the console
-        patio_count = feature.properties.COUNT//if the collision count is higher, this value becomes the new maximum stored in maxcollis
-    }
-});
+})
 
 
 /*--------------------------------------------------------------------
@@ -410,23 +272,6 @@ legendcheck.addEventListener('click', () => {
     }
 });
 
-//Neighbourhood layer display (check box)
-document.getElementById('layercheck').addEventListener('change', (e) => {
-    map.setLayoutProperty(
-        'neighbourhoods-fill',
-        'visibility',
-        e.target.checked ? 'visible' : 'none'
-    );
-});
-//this ensures that unchecking the neighbourhoods layer will remove all polygons, even if one is highlighted
-document.getElementById('layercheck').addEventListener('change', (e) => {
-    map.setLayoutProperty(
-        'neighbourhoods-opaque',
-        'visibility',
-        e.target.checked ? 'visible' : 'none'
-    );
-});
-
 // Subway stations layer display (check box)
 document.getElementById('subwayCheck').addEventListener('change', (e) => {
     map.setLayoutProperty(
@@ -481,7 +326,7 @@ map.on('click', 'neighbourhoods-fill', (e) => {
         .setLngLat(e.lngLat) //Coordinates of the mouse click to determine the coordinates of the pop-up
         //Text for the pop-up:
         .setHTML("<b>Neighbourhood Name:</b> " + e.features[0].properties.AREA_NAME + "<br>" +// shows neighbourhood name
-            "<b>Improvment Status:</b> " + e.features[0].properties.CLASSIFICATION) + //shows neighbourhood improvement status
+            "<b>Improvment Status:</b> " + e.features[0].properties.CLASSIFICATION) +  "<br>" //shows neighbourhood improvement status
             "<b>CafeTO patio count:</b> " + e.features[0].properties.COUNT + "<br>" // shows the number of patios per neighbourhood
         .addTo(map); //Adds the popup to the map
 });
@@ -533,33 +378,96 @@ map.on('click', 'bus-routes', (e) => {
     
 })
 
-//Filter data layer to show selected neighbourhood attribute from dropdown selection
-let boundaryvalue;
+//the Turf collect function is used below to collect the unique '_id' properties from the collision points data for each hexagon 
+//the result of the function is stored in a variable called collishex
+    
+let patio_neighb = turf.collect(neighbourhoodsjson, 'cafe-parklets', '_id', 'values');    
+
+console.log(collishex) //Viewing the collect output in the console
+
+let patio_count = 0; //a variable to store the maximum count of collisions in a given cell
+
+//below is a conditional statment to find the maximum collision count in any given hexagon
+collishex.features.forEach((feature) => {
+    feature.properties.COUNT = feature.properties.values.length
+    if (feature.properties.COUNT > patio_count) { //this line tests if the count in a hexagon exceeds the maximum count found up to that point
+        console.log(feature); //Allows me to view the process of determining the macimum count in the console
+        patio_count = feature.properties.COUNT//if the collision count is higher, this value becomes the new maximum stored in maxcollis
+    }
+});
+
+/*--------------------------------------------------------------------
+FILTER NEIGHBOURHOOD LAYER
+- Users can select from a dropdown menu a neighbourhood attribute to visualize on the map
+--------------------------------------------------------------------*/
+
+let attributevalue;
 
 document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) => {   
     attributevalue = document.getElementById('attribute').value;
 
     console.log(attributevalue);
 
-    if (attributevalue == 'All') {
-        map.setFilter(
-            'provterr-fill',
-            ['has', 'PRENAME'] //returns all polygons from layer that have a value in PRENAME field
-        );
-    } 
-    if (attributevalue == 'incomeSelect') {
-        map.setLayoutProperty(
-            'neigh_income',
-            'visibility',
-            e.target.checked ? 'visible' : 'none'
-        );
-    }
-    else {
-        map.setFilter(
-            'neighb_income',
-            ['==', ['get', 'PRENAME'], attributevalue] //returns polygon with PRENAME value that matches dropdown selection
-        );
-    }
+    if (attributevalue == 'income') {
+        map.setPaintProperty(
+            'neighbourhoods-fill', 'fill-color', [
+                 'step', //this allows for ramped colour values
+                    ['get', 'Total_income__Average_amount___'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
+                    'black',
+                    0, 'grey',
+                    25989, '#99e600', //lime green
+                    33974, 'green',
+                    44567, '#F7d125', //soft red
+                    56911, '#Ff6700', //neutral yellow
+                    89330, 'red'
+                    ],
+                'fill-opacity', 0.5, //Opacity set to 50%
+                'fill-outline-color', 'white'
+                ) 
+            } else if (attributevalue == 'population') {
+                map.setPaintProperty(
+                    'neighbourhoods-fill', 'fill-color', [  
+                        'step', //this allows for categorical colour values
+                        ['get', 'Population_density_per_square_k'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
+                        'white',
+                        0, 'grey', // Colours assigned to values >= each step is a quintile
+                        1040, 'green', //lime green
+                        3594, '#Ff6700', //neutral yellow
+                        5072, '#F7d125', //soft red
+                        7662, 'red',
+                        12859, 'black'
+                    ],
+                    'fill-opacity', 0.5, //Opacity set to 50%
+                    'fill-outline-color', 'white'
+                    ); 
+                } else if (attributevalue == 'disability') {
+                    map.setPaintProperty(
+                        'neighbourhoods-fill', 'fill-color', [  
+                            'step', //this allows for visualization of the continuous data by grouping values
+                            ['get', 'CPP_QPP_Disability_benefits__Av'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
+                            'black',
+                            0, 'grey', // Colours assigned to values >= each step is a quintile
+                            3650, 'blue',
+                            8000, 'green', //green
+                            9980, '#Ff6700', //neutral yellow
+                            11020, '#F7d125', //soft red
+                            13808, 'red'
 
-});
-
+                        ],
+                        'fill-opacity', 0.5, //Opacity set to 50%
+                        'fill-outline-color', 'white'
+                        )
+            } else if (attributevalue == 'none') {
+                map.setPaintProperty(
+                    'neighbourhoods-fill', 
+                    'fill-color', 'transparent'
+                )
+            } else {
+                map.setPaintProperty(
+                    'neighbourhoods-fill', 
+                    'fill-color', 'black',
+                    'fill-opacity', 0.5, //Opacity set to 50%
+                    'fill-outline-color', 'white',
+            )
+        };       
+        })
