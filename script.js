@@ -101,7 +101,12 @@ map.on('load', () => {
             'fill-outline-color': 'white',
             
         },
-    });
+    },
+    'subway-stations',
+    'subwaystn-buff',
+    'bus-routes',
+    'cycling'
+    );
 
     // Turns off subway station layer by default
     map.setLayoutProperty(
@@ -148,10 +153,13 @@ map.on('load', () => {
         'type': 'line',
         'source': 'ttcbusroutes',
         'paint': {
-            'line-color': '#B42222',
+            'line-color': 'yellow',
             'line-width': 1.5
         }
-    });
+    },
+    'subway-stations',
+    'subwaystn-buff'
+    );
     
     // Turns off bus routes layer by default
     map.setLayoutProperty(
@@ -173,7 +181,10 @@ map.on('load', () => {
         'paint': {
             'line-color': '#b45bf5'
         }
-    });
+    },
+    'subway-stations',
+    'subwaystn-buff'
+    );
     
     // Turns off cycling network layer by default
     map.setLayoutProperty(
@@ -377,24 +388,6 @@ map.on('click', 'bus-routes', (e) => {
         .addTo(map); // Adds pop-up to map
     
 })
-
-//the Turf collect function is used below to collect the unique '_id' properties from the collision points data for each hexagon 
-//the result of the function is stored in a variable called collishex
-    
-let patio_neighb = turf.collect(neighbourhoodsjson, 'cafe-parklets', '_id', 'values');    
-
-console.log(collishex) //Viewing the collect output in the console
-
-let patio_count = 0; //a variable to store the maximum count of collisions in a given cell
-
-//below is a conditional statment to find the maximum collision count in any given hexagon
-collishex.features.forEach((feature) => {
-    feature.properties.COUNT = feature.properties.values.length
-    if (feature.properties.COUNT > patio_count) { //this line tests if the count in a hexagon exceeds the maximum count found up to that point
-        console.log(feature); //Allows me to view the process of determining the macimum count in the console
-        patio_count = feature.properties.COUNT//if the collision count is higher, this value becomes the new maximum stored in maxcollis
-    }
-});
 
 /*--------------------------------------------------------------------
 FILTER NEIGHBOURHOOD LAYER
