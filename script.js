@@ -1,5 +1,5 @@
 /*--------------------------------------------------------------------
-GGR472 Lab 3
+GGR472 Final Project
 JavaScript
 --------------------------------------------------------------------*/
 
@@ -250,7 +250,7 @@ if (feature.properties.COUNT > maxcafe) { //this line tests if the count in a he
         'paint': {
             'circle-radius':['interpolate', ['linear'], ['zoom'], 9, 1, 10.5, 2, 12, 3, 15, 5],
             // the above code adjusts the size of points according to the zoom level
-            'circle-color':'blue'
+            'circle-color':'yellow'
         }
     });
 
