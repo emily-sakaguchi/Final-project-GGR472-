@@ -68,7 +68,33 @@ let neighbourhoodsjson;
         neighbourhoodsjson = response; // Stores the response in the variable created above
     });
 
+    
+let cafejson;
+
+    fetch('https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/main/CafeTO%20parklet.geojson%20copy')
+    .then(response => response.json()) // Converts the response to JSON format  
+    .then(response => {
+        console.log(response); //Checking the response in console
+        cafejson = response; // Stores the response in the variable created above
+    });
+
 map.on('load', () => {
+
+//the Turf collect function is used below to collect the unique '_id' properties from the cafe patio points data for each neighbourhood
+//the result of the function is stored in a variable called cafe_neighb
+let cafe_neighb = turf.collect(neighbourhoodsjson, cafejson, '_id', 'values');
+console.log(cafe_neighb) //Viewing the collect output in the console
+
+let maxcafe = 0; //a variable to store the maximum count of collisions in a given cell
+
+//below is a conditional statment to find the maximum cafe count in any given neighbourhood
+cafe_neighb.features.forEach((feature) => {
+feature.properties.COUNT = feature.properties.values.length
+if (feature.properties.COUNT > maxcafe) { //this line tests if the count in a hexagon exceeds the maximum count found up to that point
+    console.log(feature); //Allows me to view the process of determining the maximum count in the console
+    maxcafe = feature.properties.COUNT//if the cafe count is higher, this value becomes the new maximum stored in maxcafe
+}
+});
 
     map.addSource('subway-stns',{
         type: 'geojson',
@@ -103,6 +129,24 @@ map.on('load', () => {
         },
     },
     'subway-stations',
+    'subwaystn-buff',
+    'bus-routes',
+    'cycling'
+    );
+
+    //The same polygon layers of neighbouroods with different visualization (for the hover event)
+    map.addLayer({
+        'id': 'neighbourhoods-opaque', //New ID for the highlighted layer
+        'type': 'fill',
+        'source': 'neighbourhoodsTO_geojson',
+        'paint': {
+            'fill-color': 'black',
+            'fill-opacity': 1, //Opacity set to 50%
+            'fill-outline-color': 'white',
+        },
+        'filter': ['==', ['get', '_id'], ''] //Initial filter (returns nothing)
+     },
+     'subway-stations',
     'subwaystn-buff',
     'bus-routes',
     'cycling'
@@ -193,25 +237,25 @@ map.on('load', () => {
         'none'
     );
 
-    /*--------------------------------------------------------------------
-    LOADING GEOJSON FROM GITHUB
-    --------------------------------------------------------------------*/
-    map.addSource('cafesjson',{
+   
+    map.addSource('cafes_json',{
     'type': 'geojson', //geojson format will allow me to execute future GIS analysis on this same data using Turf.js
-    'data': 'https://raw.githubusercontent.com/emily-sakaguchi/lab_3/main/CafeTO%20parklet.geojson' //link to the github raw data
+    'data': cafejson
     })
 
     map.addLayer({
         'id': 'cafe-parklets',
         'type':'circle',
-        'source': 'cafesjson',
+        'source': 'cafes_json',
         'paint': {
             'circle-radius':['interpolate', ['linear'], ['zoom'], 9, 1, 10.5, 2, 12, 3, 15, 5],
             // the above code adjusts the size of points according to the zoom level
             'circle-color':'blue'
         }
     });
+
 })
+
 
 
 /*--------------------------------------------------------------------
@@ -336,9 +380,9 @@ map.on('click', 'neighbourhoods-fill', (e) => {
     new mapboxgl.Popup() //Declares a new popup on each click
         .setLngLat(e.lngLat) //Coordinates of the mouse click to determine the coordinates of the pop-up
         //Text for the pop-up:
-        .setHTML("<b>Neighbourhood Name:</b> " + e.features[0].properties.AREA_NAME + "<br>" +// shows neighbourhood name
-            "<b>Improvment Status:</b> " + e.features[0].properties.CLASSIFICATION) +  "<br>" //shows neighbourhood improvement status
-            "<b>CafeTO patio count:</b> " + e.features[0].properties.COUNT + "<br>" // shows the number of patios per neighbourhood
+        .setHTML("<b>Neighbourhood Name:</b> " + e.features[0].properties.FIELD_7 + "<br>" +// shows neighbourhood name
+            "<b>Improvment Status:</b> " + e.features[0].properties.FIELD_9 +  "<br>" +//shows neighbourhood improvement status
+            "<b>CafeTO patio count:</b> " + e.features[0].properties.COUNT)  // shows the number of patios per neighbourhood
         .addTo(map); //Adds the popup to the map
 });
 
@@ -463,4 +507,20 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
                     'fill-outline-color', 'white',
             )
         };       
-        })
+        });
+
+
+    /*--------------------------------------------------------------------
+    HOVER EVENT
+    - if a neighbourhood polygon is under the mouse hover, it will turn opaque
+    --------------------------------------------------------------------*/
+
+    map.on('mousemove', 'neighbourhoods-fill', (e) => {
+        if (e.features.length > 0) { //determines if there is a feature under the mouse
+            map.setFilter('neighbourhoods-opaque', ['==', ['get', 'OBJECTID'], e.features[0].properties.OBJECTID]); //applies the filter set above
+        }
+    });
+    
+    map.on('mouseleave', 'neighbourhoods-opaque', () => { //removes the highlight when the mouse moves away
+        map.setFilter("neighbourhoods-opaque",['==', ['get', 'OBJECTID'], '']);
+    });
