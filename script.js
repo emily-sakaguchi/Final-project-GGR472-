@@ -140,8 +140,8 @@ if (feature.properties.COUNT > maxcafe) { //this line tests if the count in a he
         'type': 'fill',
         'source': 'neighbourhoodsTO_geojson',
         'paint': {
-            'fill-color': 'black',
-            'fill-opacity': 1, //Opacity set to 50%
+            'fill-color': 'white',
+            'fill-opacity': 0.8, //Opacity set to 80%
             'fill-outline-color': 'white',
         },
         'filter': ['==', ['get', '_id'], ''] //Initial filter (returns nothing)
@@ -197,7 +197,7 @@ if (feature.properties.COUNT > maxcafe) { //this line tests if the count in a he
         'type': 'line',
         'source': 'ttcbusroutes',
         'paint': {
-            'line-color': 'yellow',
+            'line-color': 'black',
             'line-width': 1.5
         }
     },
@@ -263,17 +263,21 @@ LEGEND
 --------------------------------------------------------------------*/
 //Declare array variables for labels and colours
 var legendlabels = [ //I use var rather than const here to provide myself with flexiblity as the legend changes
-    'Not an NIA or Emerging Neighbourhood',
-    'Neighbourhood Improvement Area', 
-    'Emerging Neighbourhood',
-    'Curb lane/parklet café'
+'0',  //as string rather than int so that commas can be added for readability
+'25,989', 
+'33,974', 
+'44,567',  
+'56,911', 
+'89,330', 
 ];
 
 var legendcolours = [ //I use var rather than const here to provide myself with flexiblity as the legend changes
-    '#99e600', // lime green for 'Not an NIA or Emerging Neighbourhood'
-    '#F7d125', // soft red for 'Neighbourhood Improvement Area'
-    '#Ff6700', // neutral yellow for 'Emerging Neighbourhood'
-    'blue' // curb lane/parklet café
+'grey',
+'#b3c5af', 
+'#8da685',
+'#326f07', 
+'#245b08', 
+'#164808'  
 ];
 
 //legend variable that corresponds to legend div tag in html
@@ -452,11 +456,11 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
                     ['get', 'Total_income__Average_amount___'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
                     'black',
                     0, 'grey',
-                    25989, '#99e600', //lime green
-                    33974, 'green',
-                    44567, '#F7d125', //soft red
-                    56911, '#Ff6700', //neutral yellow
-                    89330, 'red'
+                    25989, '#b3c5af', 
+                    33974, '#8da685',
+                    44567, '#326f07', 
+                    56911, '#245b08', 
+                    89330, '#164808'
                     ],
                 'fill-opacity', 0.5, //Opacity set to 50%
                 'fill-outline-color', 'white'
@@ -466,13 +470,13 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
                     'neighbourhoods-fill', 'fill-color', [  
                         'step', //this allows for categorical colour values
                         ['get', 'Population_density_per_square_k'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
-                        'white',
-                        0, 'grey', // Colours assigned to values >= each step is a quintile
-                        1040, 'green', //lime green
-                        3594, '#Ff6700', //neutral yellow
-                        5072, '#F7d125', //soft red
-                        7662, 'red',
-                        12859, 'black'
+                        'black',
+                        0, 'grey', // Colours assigned to values  >= each step is a quintile (darker colour indiated greater density)
+                        1040, '#ccb5ae', //lightest colour for least dense population 
+                        3594, '#ac8f85', 
+                        5072, '#784224', 
+                        7662, '#65311F', 
+                        12859, '#532119' //darkest colour for densest population
                     ],
                     'fill-opacity', 0.5, //Opacity set to 50%
                     'fill-outline-color', 'white'
@@ -484,12 +488,11 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
                             ['get', 'CPP_QPP_Disability_benefits__Av'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
                             'black',
                             0, 'grey', // Colours assigned to values >= each step is a quintile
-                            3650, 'blue',
-                            8000, 'green', //green
-                            9980, '#Ff6700', //neutral yellow
-                            11020, '#F7d125', //soft red
-                            13808, 'red'
-
+                            3650, '#ddb7d9',
+                            8000, '#ca92c4', 
+                            9980, '#aa3aa1',
+                            11020, '#8d2b86', 
+                            13808, '#711c6c'
                         ],
                         'fill-opacity', 0.5, //Opacity set to 50%
                         'fill-outline-color', 'white'
@@ -497,7 +500,8 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
             } else if (attributevalue == 'none') {
                 map.setPaintProperty(
                     'neighbourhoods-fill', 
-                    'fill-color', 'transparent'
+                    'fill-color', 'transparent',
+                    'fill-outline-color', 'transparent',
                 )
             } else {
                 map.setPaintProperty(
@@ -516,7 +520,7 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
     --------------------------------------------------------------------*/
 
     map.on('mousemove', 'neighbourhoods-fill', (e) => {
-        if (e.features.length > 0) { //determines if there is a feature under the mouse
+        if (e.features.length > 0 && attributevalue != 'none') { //determines if there is a feature under the mouse
             map.setFilter('neighbourhoods-opaque', ['==', ['get', 'OBJECTID'], e.features[0].properties.OBJECTID]); //applies the filter set above
         }
     });
