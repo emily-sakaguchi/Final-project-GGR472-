@@ -80,22 +80,6 @@ let cafejson;
 
 map.on('load', () => {
 
-//the Turf collect function is used below to collect the unique '_id' properties from the cafe patio points data for each neighbourhood
-//the result of the function is stored in a variable called cafe_neighb
-let cafe_neighb = turf.collect(neighbourhoodsjson, cafejson, '_id', 'values');
-console.log(cafe_neighb) //Viewing the collect output in the console
-
-let maxcafe = 0; //a variable to store the maximum count of collisions in a given cell
-
-//below is a conditional statment to find the maximum cafe count in any given neighbourhood
-cafe_neighb.features.forEach((feature) => {
-feature.properties.COUNT = feature.properties.values.length
-if (feature.properties.COUNT > maxcafe) { //this line tests if the count in a hexagon exceeds the maximum count found up to that point
-    console.log(feature); //Allows me to view the process of determining the maximum count in the console
-    maxcafe = feature.properties.COUNT//if the cafe count is higher, this value becomes the new maximum stored in maxcafe
-}
-});
-
     map.addSource('subway-stns',{
         type: 'geojson',
         data: 'https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/main/subway-stations.geojson' 
@@ -261,46 +245,100 @@ if (feature.properties.COUNT > maxcafe) { //this line tests if the count in a he
 /*--------------------------------------------------------------------
 LEGEND
 --------------------------------------------------------------------*/
-//Declare array variables for labels and colours
-var legendlabels = [ //I use var rather than const here to provide myself with flexiblity as the legend changes
-'0',  //as string rather than int so that commas can be added for readability
-'25,989', 
-'33,974', 
-'44,567',  
-'56,911', 
-'89,330', 
-];
 
-var legendcolours = [ //I use var rather than const here to provide myself with flexiblity as the legend changes
-'grey',
-'#b3c5af', 
-'#8da685',
-'#326f07', 
-'#245b08', 
-'#164808'  
-];
+// Income Legend
+
+// //Declare array variables for labels and colours
+// var legendlabels = [ //I use var rather than const here to provide myself with flexiblity as the legend changes
+// '0',  //as string rather than int so that commas can be added for readability
+// '0 - 25,989', 
+// '25,989 - 33,974', 
+// '33,974 - 44,567',  
+// '44,567 - 56,911', 
+// '56,911 - 89,330', 
+// ];
+
+// var legendcolours = [ //I use var rather than const here to provide myself with flexiblity as the legend changes
+// 'grey',
+// '#b3c5af', 
+// '#8da685',
+// '#326f07', 
+// '#245b08', 
+// '#164808'  
+// ];
+
+// //legend variable that corresponds to legend div tag in html
+// const legend = document.getElementById('legend');
+
+// //Creates a legend block containing colours and labels
+// legendlabels.forEach((label, i) => {
+//     const color = legendcolours[i];
+
+//     const item = document.createElement('div'); //creates the rows
+//     const key = document.createElement('span'); //adds a key (circle of colour) to the row
+
+//     key.className = 'legend-key'; //style proprties assigned in style.css
+//     key.style.backgroundColor = color; //the color is assigned in the layers array
+
+//     const value = document.createElement('span'); //adds a value to each row 
+//     value.innerHTML = `${label}`; //adds a text label to the value 
+
+//     item.appendChild(key); //appends the key to the legend row
+//     item.appendChild(value); //appends the value to the legend row
+
+//     legend.appendChild(item); //appends each row to the legend
+// });
+
+// ['get', 'Population_density_per_square_k'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
+// 'black',
+// 0, 'grey', // Colours assigned to values  >= each step is a quintile (darker colour indiated greater density)
+// 1040, '#ccb5ae', //lightest colour for least dense population 
+// 3594, '#ac8f85', 
+// 5072, '#784224', 
+// 7662, '#65311F', 
+// 12859, '#532119'
+// Population Density Legend
+
+//Declare array variables for labels and colours
+// var legendlabels = [ //I use var rather than const here to provide myself with flexiblity as the legend changes
+// '0',  //as string rather than int so that commas can be added for readability
+// '0 - 1,040', 
+// '1,040 - 3,594', 
+// '3,594 - 5,072',  
+// '5,072 - 7,662', 
+// '7,662 - 12, 859', 
+// ];
+
+// var legendcolours = [ //I use var rather than const here to provide myself with flexiblity as the legend changes
+// 'grey',
+// '#ccb5ae', 
+// '#ac8f85',
+// '784224', 
+// '#65311F', 
+// '#532119',  
+// ];
 
 //legend variable that corresponds to legend div tag in html
-const legend = document.getElementById('legend');
+// const popLegend = document.getElementById('popLegend');
 
-//Creates a legend block containing colours and labels
-legendlabels.forEach((label, i) => {
-    const color = legendcolours[i];
+// //Creates a legend block containing colours and labels
+// legendlabels.forEach((label, i) => {
+//     const color = legendcolours[i];
 
-    const item = document.createElement('div'); //creates the rows
-    const key = document.createElement('span'); //adds a key (circle of colour) to the row
+//     const item = document.createElement('div'); //creates the rows
+//     const key = document.createElement('span'); //adds a key (circle of colour) to the row
 
-    key.className = 'legend-key'; //style proprties assigned in style.css
-    key.style.backgroundColor = color; //the color is assigned in the layers array
+//     key.className = 'legend-key'; //style proprties assigned in style.css
+//     key.style.backgroundColor = color; //the color is assigned in the layers array
 
-    const value = document.createElement('span'); //adds a value to each row 
-    value.innerHTML = `${label}`; //adds a text label to the value 
+//     const value = document.createElement('span'); //adds a value to each row 
+//     value.innerHTML = `${label}`; //adds a text label to the value 
 
-    item.appendChild(key); //appends the key to the legend row
-    item.appendChild(value); //appends the value to the legend row
+//     item.appendChild(key); //appends the key to the legend row
+//     item.appendChild(value); //appends the value to the legend row
 
-    legend.appendChild(item); //appends each row to the legend
-});
+//     legend.appendChild(item); //appends each row to the legend
+// });
 
 
 /*--------------------------------------------------------------------
@@ -317,17 +355,45 @@ document.getElementById('returnbutton').addEventListener('click', () => {
     });
 });
 
-//Legend display (check box)
-let legendcheck = document.getElementById('legendcheck');
+// Income legend display (check box)
+let incomeLegendCheck = document.getElementById('incomeLegendCheck');
 
-legendcheck.addEventListener('click', () => {
-    if (legendcheck.checked) {
-        legendcheck.checked = true; //when checked (true), the legend block is visible
-        legend.style.display = 'block';
+incomeLegendCheck.addEventListener('click', () => {
+    if (incomeLegendCheck.checked) {
+        incomeLegendCheck.checked = true; //when checked (true), the legend block is visible
+        incomeLegend.style.display = 'block';
     }
     else {
-        legend.style.display = "none"; 
-        legendcheck.checked = false; //when unchecked (false), the legend block is not displayed
+        incomeLegend.style.display = "none"; 
+        incomeLegendCheck.checked = false; //when unchecked (false), the legend block is not displayed
+    }
+});
+
+//Population legend display (check box)
+let popLegendCheck = document.getElementById('popLegendCheck');
+
+popLegendCheck.addEventListener('click', () => {
+    if (popLegendCheck.checked) {
+        popLegendCheck.checked = true; //when checked (true), the legend block is visible
+        popLegend.style.display = 'block';
+    }
+    else {
+        popLegend.style.display = "none"; 
+        popLegendCheck.checked = false; //when unchecked (false), the legend block is not displayed
+    }
+});
+
+//Disability index legend display (check box)
+let disLegendCheck = document.getElementById('disLegendCheck');
+
+disLegendCheck.addEventListener('click', () => {
+    if (disLegendCheck.checked) {
+        disLegendCheck.checked = true; //when checked (true), the legend block is visible
+        disLegend.style.display = 'block';
+    }
+    else {
+        disLegend.style.display = "none"; 
+        disLegendCheck.checked = false; //when unchecked (false), the legend block is not displayed
     }
 });
 
@@ -385,8 +451,8 @@ map.on('click', 'neighbourhoods-fill', (e) => {
         .setLngLat(e.lngLat) //Coordinates of the mouse click to determine the coordinates of the pop-up
         //Text for the pop-up:
         .setHTML("<b>Neighbourhood Name:</b> " + e.features[0].properties.FIELD_7 + "<br>" +// shows neighbourhood name
-            "<b>Improvment Status:</b> " + e.features[0].properties.FIELD_9 +  "<br>" +//shows neighbourhood improvement status
-            "<b>CafeTO patio count:</b> " + e.features[0].properties.COUNT)  // shows the number of patios per neighbourhood
+            "<b>Improvment Status:</b> " + e.features[0].properties.FIELD_9//shows neighbourhood improvement status
+            )
         .addTo(map); //Adds the popup to the map
 });
 
@@ -453,7 +519,7 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
         map.setPaintProperty(
             'neighbourhoods-fill', 'fill-color', [
                  'step', //this allows for ramped colour values
-                    ['get', 'Total_income__Average_amount___'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
+                    ['get', 'Total_income__Average_amount___'], //Classification of average income is the category of interest
                     'black',
                     0, 'grey',
                     25989, '#b3c5af', 
@@ -469,7 +535,7 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
                 map.setPaintProperty(
                     'neighbourhoods-fill', 'fill-color', [  
                         'step', //this allows for categorical colour values
-                        ['get', 'Population_density_per_square_k'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
+                        ['get', 'Population_density_per_square_k'], //Classification of population density is the category of interest
                         'black',
                         0, 'grey', // Colours assigned to values  >= each step is a quintile (darker colour indiated greater density)
                         1040, '#ccb5ae', //lightest colour for least dense population 
@@ -485,7 +551,7 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
                     map.setPaintProperty(
                         'neighbourhoods-fill', 'fill-color', [  
                             'step', //this allows for visualization of the continuous data by grouping values
-                            ['get', 'CPP_QPP_Disability_benefits__Av'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
+                            ['get', 'CPP_QPP_Disability_benefits__Av'], //Classification of mean disability benefits received is the category of interest
                             'black',
                             0, 'grey', // Colours assigned to values >= each step is a quintile
                             3650, '#ddb7d9',
