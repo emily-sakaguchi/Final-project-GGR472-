@@ -1,3 +1,4 @@
+<!--This file is the index and codes the HTML for web map situated on our website's main page-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,13 +31,14 @@
   <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark"><!--theme set to dark-->
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">GGR472</a>
+          <a class="navbar-brand" href="#">CafeTO Access Tracker</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
+                <!--nav-link set to active to show this is the current page selection in the navbar-->
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
@@ -121,18 +123,16 @@
         </div>
 
 
-         <!-- FILTER MENU -->
-     
+         <!-- DROP-DOWN MENU -->
          <form>
           <fieldset id="neighbourhoodfieldset">
-            <label>Select features to display</label>
+            <label>Select neighbourhood display</label> <!-- Allows users to change the data visualized in the neighbourhood layer-->
             <select id="attribute" name="attribute">
-              <option value="" disabled selected>Select...</option>
-              <option value="income">Income</option>
-              <option value="population">Population density</option>
-              <option value="disability">Disability index</option>
-              <option value="none">None</option>
-              <option value="default">Default</option>
+              <option value="default">Default</option> <!-- Sets the neighbourhood layers to reference polygons -->
+              <option value="income">Income</option> <!-- Presents a choropleth of mean income by neighbourhood-->
+              <option value="population">Population density</option> <!-- Presents a choropleth of population density by neighbourhood-->
+              <option value="disability">Disability index</option> <!-- Presents a choropleth of mean disability benefits by neighbourhood-->
+              <option value="none">None</option> <!-- Removes the neighbourhoods (leaves faint borders as a spatial reference) -->
             </select>
           </fieldset>
         </form> 
@@ -148,6 +148,7 @@
         <div><span style='background-color: #326f07'></span>33,974 - 44,567</div>
         <div><span style='background-color: #245b08'></span>44,567 - 56,911</div>
         <div><span style='background-color: #164808'></span>56,911 - 89,330</div>
+        <div><span style='background-color: yellow'></span>CafeTO patio</div>
     </div>
 
     <!-- Population Density Legend -->
@@ -159,6 +160,7 @@
         <div><span style='background-color: #784224'></span>3,594 - 5,072</div>
         <div><span style='background-color: #65311F'></span>5,072 - 7,662</div>
         <div><span style='background-color: #532119'></span>7,662 - 12,859</div>
+        <div><span style='background-color: yellow'></span>CafeTO patio</div>
     </div>
 
     <!-- Disability Index Legend -->
@@ -170,6 +172,7 @@
         <div><span style='background-color: #aa3aa1'></span>8,000 - 9,980</div>
         <div><span style='background-color: #8d2b86'></span>9,980 - 11,020</div>
         <div><span style='background-color: #711c6c'></span>11,020 - 13,808</div>
+        <div><span style='background-color: yellow'></span>CafeTO patio</div>
     </div>
 
 <!-- JAVASCRIPT -->

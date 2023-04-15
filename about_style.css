@@ -1,121 +1,70 @@
 
 /*About page styling*/
 
-.bg {
-    top: 0; 
-    left: 0; 
-    min-width: 100%;
-    min-height: 100%;
+body {
+    background-image: url("https://images.unsplash.com/photo-1619468129361-605ebea04b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80");
+    background-position: center; /*centers image on the page*/
+    background-repeat: no-repeat; /*uses the background image only once rather than creating tiles of repeated images*/
+    background-size: cover; /*stretches the image to fill the screen*/
+    background-attachment: fixed; /*keeps the image static while the other page content scrolls*/
 }
 
-.abt_overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    color:black;
-    opacity: 0.85;
-    margin-top: 50px;
-    transform: translate(-50%,-50%);
+/*We use flexboxes so the overlay of information is easy and extra "about" boxes can be added at any time*/
+.card-container {
+    display: flex; 
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5vw; /*creates spacing between boxes*/
+    flex-wrap: wrap; 
+    margin-top: 5vw; /*creates spacing between the top box and the navbar*/
+    margin-bottom: 5vw; /*creates spacing between the bottom box and the bottom of the screen*/
 }
-h1 {
-    position: absolute;
-    color:whitesmoke;
+
+.card {
+    width: 60vw; /*wide enough so that each box is a single row */
+    position: relative;
+    display: flex;
+    flex-direction: column; /*allows the format to scroll as columns*/
+    justify-content: center;
+    align-items: center;
+}
+.card .card-title{
     font-family: serif;
-    font-size: 70px;
+    font-size: 4vw;
     font-weight: bold;
-    text-align: center;
-    transform: translate(0%,-200%);
-}
-
-h2 {
-    color:whitesmoke;
-    font-size:large
-}
-p1 {
-    color:whitesmoke
-}
-.btn1 {
-    background-color: transparent; 
-    color: whitesmoke; 
-    border-color: gray;
-    padding: 12px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-}
-  
-.btn1:hover {
-background-color: whitesmoke;
-    color: black;
-}
-
-/*News page styling*/
-
-.head-section {
-    margin-top: 3%;
-   
-}
-
-h4 {
-    font-size: 500%;
-    font-weight: bolder;
-    font-family: serif;
-    text-align: center;
-}
-
-h5 {
-    font-size: 150%;
-    font-family: sans-serif;
-    text-align: center;
-}
-.container {
-    width: 80%;
-}
-
-.row {
-    margin-top: 20px;
-}
-.card-img-top {
-    width: 100%;  /*width of container */
-    height: 200px; /* height of container */
-    object-fit: cover;
-}
-
-.card-body {
-    height: 210px
-}
-
-.card-text {
     position: absolute;
-    bottom: 5%;
-    color: gray;
-    font-style: italic;
+    color: whitesmoke;   
+    top: 2vw;
+    text-align: centre;
 }
 
-.btn-news {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight:bold;
-    font-size: 150%;
-    text-align:left;
-    text-decoration: none;
-    color: black;
-    background-color: white;
-    border-radius: 12%;
-    /*text-overflow: ellipsis;
-    /* Required for text-overflow to do anything */
-   /* white-space: nowrap;
-    overflow: hidden;*/
+.card:nth-child(1) {
+    background: #5d3020; /*colour confirmed to be accessible with white text*/
+    opacity: 0.9; /*90% opacity to style the page with an aesthetically pleasing, contemporary look*/
+    height: 40vw; /*sets an individual height for the box to match the amount of text it contains*/
+}
+.card:nth-child(2) {
+    background-color: #4d6879; /*colour confirmed to be accessible with white text*/
+    opacity: 0.9; /*90% opacity to style the page with an aesthetically pleasing, contemporary look*/
+    height: 50vw; /*sets an individual height for the box to match the amount of text it contains*/
 }
 
-.btn-news:hover {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight:bold;
-    font-size: x-large;
-    text-align:left;
-    text-decoration: none;
-    color: slategrey;
+.card:nth-child(3) {
+    background-color: #274253; /*colour confirmed to be accessible with white text*/
+    opacity: 0.9; /*90% opacity to style the page with an aesthetically pleasing, contemporary look*/
+    height: 20vw; /*sets an individual height for the box to match the amount of text it contains*/
+}
+
+.card .card-text{
+    position: absolute;
+    color: white;
+    font-size: 1.2vw;
+    padding: 4vw;
+    transform: translate(0vw, 2vw); /*This moves the text down to prevent more visually pleasing spacing from the title and bottom of the card*/
+}
+
+.bottom-right {
+    position: absolute;
+    right: 0%; /*moves the photo credit to the right side of the page*/
+    background: white; /*makes the photo credit text legible*/
 }

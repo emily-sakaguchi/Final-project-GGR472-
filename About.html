@@ -1,3 +1,4 @@
+<!--This file codes the HTML for the About page containing the background information on the project-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,44 +18,84 @@
   <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark"><!--theme set to dark-->
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">GGR472</a>
+          <a class="navbar-brand" href="#">CafeTO Access Tracker</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" href="index.html" href="#">Home</a>
+                <a class="nav-link" href="index.html" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="About.html">About</a>
+                <!--nav-link set to active to show this as the current page selection in the navbar-->
+                <a class="nav-link active" aria-current="page" href="About.html">About</a> 
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href ="form.html">Share your ideas</a>
+                <a class="nav-link" href ="form.html">Share your ideas</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href ="News.html">News</a>
-            </li>
-            </ul>
-            </form>
-          </div>
-        </div>
-      </nav>
-
-    <img class="bg" src="https://images.unsplash.com/photo-1619468129361-605ebea04b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80">
-    
-    <div class="abt_overlay">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/A_black_image.jpg/640px-A_black_image.jpg">
-      <div class="abt_overlay">
-        <div class="bottom-right">Photograph by GeoJango Maps via Unsplash</div>
-          <h1>About Us</h1>
-          <p1>
-            We are three UofT students who created this website to show the spatial impacts of CafeTO, especially with regards to access and mobility. We hope our map can be useful for evaluating CafeTO's role in shaping Toronto's urban environment!
-            CafeTO emerged in response to the COVID pandemic to promote social distancing while supporting the businesses of bars and restaurants.
-            CafeTO does so by facilitating outdoor dining spaces.
-          </p1>
+                <a class="nav-link" href ="News.html">News</a>
+              </li>
+          </ul>
+        </form>
       </div>
-    </div>
+    </div>  
+  </nav>
 
+    <!--Separate about sub-sections styled using flexbox cards-->
+  <div class="card-container">
+    <!--Card 1-->
+    <div class="card">
+      <div class="card-title">About the Map</a></div>
+      <div class="card-text">
+        We designed the CafeTO Access Tracker to understand how well the CafeTO program is serving Torontonians from 
+        both a transportation perspective and from a disability perspective.
+        <br><br>
+        How easy is it to access patio cafes by public transit? Bike lanes? 
+        Are the patios is the densest areas? How does income predit access to CafeTO patios?
+        We hope our map can be useful for evaluating CafeTO's role in shaping Toronto's urban environment, 
+        generating discussion about accessibility, and helping guide future decisions regarding the CafeTO program.
+        <br>
+        <br>
+        We aim to fill a gap left by existing CafeTO web infrastructure: the program website does not share data year-round, 
+        nor does it show previous locations. We hope we can continue to improve our website to provide information that is helpful to 
+        people interested in CafeTO locations, restaurant owners who might be interested in participating, and regulatory bodies 
+        evaluating both the program at large and any changes they make to it.
+      </div>        
+    </div>
+    <!--Card 2-->
+    <div class="card">
+      <div class="card-title">About CafeTO</a>
+      </div>
+      <div class="card-text">
+        CafeTO emerged as a response to the COVID-19 pandemic. The City of Toronto first piloted the program in 2020 to 
+        allow restuarants open while indoor dining was prohivited. CafeTO is particularly interesting because of how it has 
+        repurposed existing infrastructure; the city appropriated curb lanes for the restaurant patios at a time when traffic 
+        levels had fallen below normal due to the pandemic. As the city returns to gridlock, the continued presence of CafeTO on vehicular 
+        transportation may be worth investigating.
+        <br><br>
+        CafeTO programming is still being reshaped. In February 2023, the City of Toronto introduced new fees for restaurateurs 
+        looking to participate in the program. Many restaurant operators have expressed the fees are prohibitively expensive.
+        <br><br>
+        Accessibility is also a concern. In the past, the city provided asphalt ramps that restaurant owners and accessibility 
+        advocates critiqued for being ill-placed, crumbly, and inconvenient for wheelchair users. Last summer, the City of Toronto 
+        stopped providing ramps. The new regulations propose improving accessibility by mandating all patios be built on a platform 
+        level with the sidewalk, but some restaurant owners see these regulations as further obstacles to 
+        participation in the program. 
+      </div>        
+    </div>
+    <!--Card 3-->
+    <div class="card">
+      <div class="card-title">About Us</div>
+      <div class="card-text">
+        We are three University of Toronto students interested in transportation and accessibility. 
+        We are all part of the urban studies, human geography, and GIS programs at the univeristy.
+        Having watched the sidewalks and streets of our city change over the course of the pandemic,
+        we became interested in mapping that change.
+      </div>        
+    </div>  
+  </div>
+  <!--Photo credit for background image-->
+  <div class="bottom-right">Photograph by GeoJango Maps via Unsplash</div>  
 </body>
-</html>

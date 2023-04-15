@@ -3,7 +3,6 @@ GGR472 Final Project
 JavaScript
 --------------------------------------------------------------------*/
 
-
 //Define access token
 mapboxgl.accessToken = 'pk.eyJ1IjoiZW1pbHlzYWthZ3VjaGkiLCJhIjoiY2xkbTByeWl5MDF5YjNua2RmdWYyZ240ciJ9.l0mkQSD3VSua3-9301GQbA';
 
@@ -43,9 +42,8 @@ document.getElementById('geocoder').appendChild(geocoder.onAdd(map)); //adds geo
 
 /*--------------------------------------------------------------------
 DATA
-- The first data set is a tilset layer of neighbourhoods in Toronto
-- The tileset is convenient for the large size of the data (many attributes recorded for each)
-- I will be looking at neighbourhood improvement areas, a municipal designation that guides planning decisions
+- We fetch data from GitHub and conver it intp JSON for compatability woht Turf.js analysis
+- We load data for subway stations, neighbourhoods, buffers, bus routes, cycling routes, and CafeTO patios
 --------------------------------------------------------------------*/
 
 // Empty variable for subway stations
@@ -59,7 +57,7 @@ fetch('https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/m
         substns = response;       // Store GeoJSON as "substns" variable
     });
     
-let neighbourhoodsjson;
+let neighbourhoodsjson; // Empty variable for neighbourhoods
 
     fetch('https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/main/Final_clean_neighbourhoods140.geojson')
     .then(response => response.json()) // Converts the response to JSON format  
@@ -69,7 +67,7 @@ let neighbourhoodsjson;
     });
 
     
-let cafejson;
+let cafejson; // Empty variable for CafeTO locations
 
     fetch('https://raw.githubusercontent.com/emily-sakaguchi/Final-project-GGR472-/main/CafeTO%20parklet.geojson%20copy')
     .then(response => response.json()) // Converts the response to JSON format  
@@ -77,7 +75,7 @@ let cafejson;
         console.log(response); //Checking the response in console
         cafejson = response; // Stores the response in the variable created above
     });
-
+// Loading data into the map
 map.on('load', () => {
 
     map.addSource('subway-stns',{
@@ -92,13 +90,13 @@ map.on('load', () => {
         'source': 'subway-stns',
         'paint': {
             'circle-radius': 4,
-            'circle-color': '#B42222'
+            'circle-color': '#B42222' // red
         }
     });
     
     map.addSource('neighbourhoodsTO_geojson', {
         type: 'geojson',
-        data: neighbourhoodsjson
+        data: neighbourhoodsjson //using the variable created to store the neighbourhood data
     });
 
     map.addLayer({
@@ -108,11 +106,10 @@ map.on('load', () => {
         'paint': {
             'fill-color': 'black',
             'fill-opacity': 0.5, //Opacity set to 50%
-            'fill-outline-color': 'white',
-            
+            'fill-outline-color': 'white'
         },
     },
-    'subway-stations',
+    'subway-stations', //Sets the drawing orer so the subways, buffers, bus routes, and cycling layers are on top of neighbourhoods
     'subwaystn-buff',
     'bus-routes',
     'cycling'
@@ -130,7 +127,7 @@ map.on('load', () => {
         },
         'filter': ['==', ['get', '_id'], ''] //Initial filter (returns nothing)
      },
-     'subway-stations',
+     'subway-stations', //Sets the drawing orer so the subways, buffers, bus routes, and cycling layers are on top of neighbourhoods
     'subwaystn-buff',
     'bus-routes',
     'cycling'
@@ -143,7 +140,7 @@ map.on('load', () => {
         'none'
     );
 
-    // Creates 500 metre buffers around each subway station point
+    // Creates 500 metre buffers (a reasonable walking distance) around each subway station point
     let buffer = turf.buffer(substns, 0.5, {units: 'kilometers'}); 
 
     map.addSource('buffer-stns', {
@@ -185,7 +182,7 @@ map.on('load', () => {
             'line-width': 1.5
         }
     },
-    'subway-stations',
+    'subway-stations', //Sets the drawing orer so the subways and subway buffers are drawn over bus routes
     'subwaystn-buff'
     );
     
@@ -211,7 +208,7 @@ map.on('load', () => {
         }
     },
     'subway-stations',
-    'subwaystn-buff'
+    'subwaystn-buff' //Sets the drawing orer so the subways and subway buffers are drawn over cycling routes
     );
     
     // Turns off cycling network layer by default
@@ -220,13 +217,13 @@ map.on('load', () => {
         'visibility',
         'none'
     );
-
    
     map.addSource('cafes_json',{
-    'type': 'geojson', //geojson format will allow me to execute future GIS analysis on this same data using Turf.js
+    'type': 'geojson', 
     'data': cafejson
     })
 
+    // Adds CafeTo patios layer to map
     map.addLayer({
         'id': 'cafe-parklets',
         'type':'circle',
@@ -234,7 +231,9 @@ map.on('load', () => {
         'paint': {
             'circle-radius':['interpolate', ['linear'], ['zoom'], 9, 1, 10.5, 2, 12, 3, 15, 5],
             // the above code adjusts the size of points according to the zoom level
-            'circle-color':'yellow'
+            'circle-color':'yellow',
+            'circle-stroke-color': 'black',
+            'circle-stroke-width': 0.5
         }
     });
 
@@ -244,7 +243,6 @@ map.on('load', () => {
 INTERACTIVITY
 - check boxes and buttons
 --------------------------------------------------------------------*/
-
 //Event listener to return map view to full screen on button click
 document.getElementById('returnbutton').addEventListener('click', () => {
     map.flyTo({
@@ -335,10 +333,11 @@ document.getElementById('buffCheck').addEventListener('change', (e) => {
 /*--------------------------------------------------------------------
 POP-UP ON CLICK EVENT
 - When the cursor moves over the map, it changes from the default hand to a pointer
-- When the cursor clicks on a neighbourhood, the name and classification will appear in a pop-up
+- When the cursor clicks on a feature, the name and classification will appear in a pop-up
 --------------------------------------------------------------------*/
+//Neighbourhoods pop-up
 map.on('mouseenter', 'neighbourhoods-fill', () => {
-    map.getCanvas().style.cursor = 'pointer'; //Switches cursor to pointer when mouse is over provterr-fill layer
+    map.getCanvas().style.cursor = 'pointer'; //Switches cursor to pointer when mouse is over the neighbourhood-fill layer
 });
 
 map.on('mouseleave', 'neighbourhoods-fill', () => {
@@ -355,6 +354,7 @@ map.on('click', 'neighbourhoods-fill', (e) => {
         .addTo(map); //Adds the popup to the map
 });
 
+//Subways pop-up
 map.on('mouseenter', 'subway-stations', () => {
     map.getCanvas().style.cursor = 'pointer';   //Switches cursor to pointer when mouse is over a subway station point
 });
@@ -371,6 +371,7 @@ map.on('click', 'subway-stations', (e) => {
         .addTo(map); // Adds pop-up to map
 });
 
+//Bus routes pop-up
 map.on('mouseenter', 'bus-routes', () => {
     map.getCanvas().style.cursor = 'pointer';   //Switches cursor to pointer when mouse is over a subway station point
 });
@@ -379,7 +380,6 @@ map.on('mouseleave', 'bus-routes', () => {
     map.getCanvas().style.cursor = '';  //Switches cursor back when mouse leaves subway station point
 
 });
-
 
 map.on('click', 'bus-routes', (e) => {
     
@@ -403,19 +403,20 @@ map.on('click', 'bus-routes', (e) => {
 })
 
 /*--------------------------------------------------------------------
-FILTER NEIGHBOURHOOD LAYER
-- Users can select from a dropdown menu a neighbourhood attribute to visualize on the map
+DROP-DOWN MENU NEIGHBOURHOOD LAYER
+- Users can select from a drop-down menu a neighbourhood attribute to visualize on the map
+- The paint property of the neighbourhoods layer changes for different attribute values
 --------------------------------------------------------------------*/
 
-let attributevalue;
+let attributevalue; //creates an empty variable to store the selection in the filter menu
 
 document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) => {   
     attributevalue = document.getElementById('attribute').value;
 
-    console.log(attributevalue);
+    console.log(attributevalue); //allows to check if the selection is working properly using the Inspect tool
 
     if (attributevalue == 'income') {
-        map.setPaintProperty(
+        map.setPaintProperty( 
             'neighbourhoods-fill', 'fill-color', [
                  'step', //this allows for ramped colour values
                     ['get', 'Total_income__Average_amount___'], //Classification of average income is the category of interest
@@ -477,77 +478,15 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
             )
         };       
         });
-/*--------------------------------------------------------------------
-LEGEND
---------------------------------------------------------------------*/
-var legendlabels
-if (attributevalue == 'income') {
-    legendlabels = 
-    '0',  //as string rather than int so that commas can be added for readability
-    '25,989', 
-    '33,974', 
-    '44,567',  
-    '56,911', 
-    '89,330';
-    }
-else if (attributevalue == 'population') {
-    'test',
-    'test',
-    'test',
-    'test',
-    'test',
-    'test';
-}
-else {
-    legendlabels = 
-    'patios',
-    'test',
-    'test',
-    'test',
-    'test',
-    'test';
-}
-
-var legendcolours = [ //I use var rather than const here to provide myself with flexiblity as the legend changes
-'grey',
-'#b3c5af', 
-'#8da685',
-'#326f07', 
-'#245b08', 
-'#164808'  
-];
-
-//legend variable that corresponds to legend div tag in html
-const legend = document.getElementById('legend');
-
-//Creates a legend block containing colours and labels
-legendlabels.forEach((label, i) => {
-    const color = legendcolours[i];
-
-    const item = document.createElement('div'); //creates the rows
-    const key = document.createElement('span'); //adds a key (circle of colour) to the row
-
-    key.className = 'legend-key'; //style proprties assigned in style.css
-    key.style.backgroundColor = color; //the color is assigned in the layers array
-
-    const value = document.createElement('span'); //adds a value to each row 
-    value.innerHTML = `${label}`; //adds a text label to the value 
-
-    item.appendChild(key); //appends the key to the legend row
-    item.appendChild(value); //appends the value to the legend row
-
-    legend.appendChild(item); //appends each row to the legend
-});
-
 
     /*--------------------------------------------------------------------
     HOVER EVENT
-    - if a neighbourhood polygon is under the mouse hover, it will turn opaque
+    - if a neighbourhood polygon is under the mouse hover, it will turn opaque and white to create a highighting effect
     --------------------------------------------------------------------*/
 
     map.on('mousemove', 'neighbourhoods-fill', (e) => {
-        if (e.features.length > 0 && attributevalue != 'none') { //determines if there is a feature under the mouse
-            map.setFilter('neighbourhoods-opaque', ['==', ['get', 'OBJECTID'], e.features[0].properties.OBJECTID]); //applies the filter set above
+        if (e.features.length > 0) { //determines if there is a feature under the mouse
+            map.setFilter('neighbourhoods-opaque', ['==', ['get', 'OBJECTID'], e.features[0].properties.OBJECTID]); //applies the empty filter created
         }
     });
     
