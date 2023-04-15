@@ -243,110 +243,11 @@ map.on('load', () => {
 
 
 /*--------------------------------------------------------------------
-LEGEND
---------------------------------------------------------------------*/
-
-// Income Legend
-
-// //Declare array variables for labels and colours
-// var legendlabels = [ //I use var rather than const here to provide myself with flexiblity as the legend changes
-// '0',  //as string rather than int so that commas can be added for readability
-// '0 - 25,989', 
-// '25,989 - 33,974', 
-// '33,974 - 44,567',  
-// '44,567 - 56,911', 
-// '56,911 - 89,330', 
-// ];
-
-// var legendcolours = [ //I use var rather than const here to provide myself with flexiblity as the legend changes
-// 'grey',
-// '#b3c5af', 
-// '#8da685',
-// '#326f07', 
-// '#245b08', 
-// '#164808'  
-// ];
-
-// //legend variable that corresponds to legend div tag in html
-// const legend = document.getElementById('legend');
-
-// //Creates a legend block containing colours and labels
-// legendlabels.forEach((label, i) => {
-//     const color = legendcolours[i];
-
-//     const item = document.createElement('div'); //creates the rows
-//     const key = document.createElement('span'); //adds a key (circle of colour) to the row
-
-//     key.className = 'legend-key'; //style proprties assigned in style.css
-//     key.style.backgroundColor = color; //the color is assigned in the layers array
-
-//     const value = document.createElement('span'); //adds a value to each row 
-//     value.innerHTML = `${label}`; //adds a text label to the value 
-
-//     item.appendChild(key); //appends the key to the legend row
-//     item.appendChild(value); //appends the value to the legend row
-
-//     legend.appendChild(item); //appends each row to the legend
-// });
-
-// ['get', 'Population_density_per_square_k'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
-// 'black',
-// 0, 'grey', // Colours assigned to values  >= each step is a quintile (darker colour indiated greater density)
-// 1040, '#ccb5ae', //lightest colour for least dense population 
-// 3594, '#ac8f85', 
-// 5072, '#784224', 
-// 7662, '#65311F', 
-// 12859, '#532119'
-// Population Density Legend
-
-//Declare array variables for labels and colours
-// var legendlabels = [ //I use var rather than const here to provide myself with flexiblity as the legend changes
-// '0',  //as string rather than int so that commas can be added for readability
-// '0 - 1,040', 
-// '1,040 - 3,594', 
-// '3,594 - 5,072',  
-// '5,072 - 7,662', 
-// '7,662 - 12, 859', 
-// ];
-
-// var legendcolours = [ //I use var rather than const here to provide myself with flexiblity as the legend changes
-// 'grey',
-// '#ccb5ae', 
-// '#ac8f85',
-// '784224', 
-// '#65311F', 
-// '#532119',  
-// ];
-
-//legend variable that corresponds to legend div tag in html
-// const popLegend = document.getElementById('popLegend');
-
-// //Creates a legend block containing colours and labels
-// legendlabels.forEach((label, i) => {
-//     const color = legendcolours[i];
-
-//     const item = document.createElement('div'); //creates the rows
-//     const key = document.createElement('span'); //adds a key (circle of colour) to the row
-
-//     key.className = 'legend-key'; //style proprties assigned in style.css
-//     key.style.backgroundColor = color; //the color is assigned in the layers array
-
-//     const value = document.createElement('span'); //adds a value to each row 
-//     value.innerHTML = `${label}`; //adds a text label to the value 
-
-//     item.appendChild(key); //appends the key to the legend row
-//     item.appendChild(value); //appends the value to the legend row
-
-//     legend.appendChild(item); //appends each row to the legend
-// });
-
-
-/*--------------------------------------------------------------------
 INTERACTIVITY
 - check boxes and buttons
 --------------------------------------------------------------------*/
 
-//event listener to return map view to full screen on button click
+//Event listener to return map view to full screen on button click
 document.getElementById('returnbutton').addEventListener('click', () => {
     map.flyTo({
         center: [-79.371, 43.720],
@@ -369,7 +270,7 @@ incomeLegendCheck.addEventListener('click', () => {
     }
 });
 
-//Population legend display (check box)
+// Population legend display (check box)
 let popLegendCheck = document.getElementById('popLegendCheck');
 
 popLegendCheck.addEventListener('click', () => {

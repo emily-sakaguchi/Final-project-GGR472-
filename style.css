@@ -55,45 +55,17 @@
     padding: 10px;
     right: 10px;
     z-index: 1;     /* Specifies stack order of elements */
-    /* position: absolute;
-    display: none;
-    background-color: #fff;
-    border-radius: 3px;
-    bottom: 0;
-    margin-bottom: 30px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /*horizontal shadow, vertical shadow, size of shadow, color*/
-    /* font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    padding-top: 3.5vw;
-    padding-left: 2vw;
-    padding-right: 3vw;
-    padding-bottom: 1vw;
-    right: 3vw; */
-   /* z-index: 1; (not sure it's necessary)*/
 } 
 
 /*This will format any header added to the legend. I do not have one at the moment as it is obvious it is a legend without one.
 Also, because there are cafes and neighbourhoods on the map, assigning a more specific name would be confusing to users.
 However, as this map evolves for my final project, I may wish to add a header and keep this code.*/
 .legend h6 {
-    /* margin: 0 0 10px;
-    font-size: x-small;
-    color: black;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    bottom: 75px;
-    right: 0.3vw; */
     margin: 0 0 10px;
     font-weight: bold;
 }
-/*formatting of legend contents*/
-/*.legend-key {
-    display: inline-block;
-    border-radius: 50%; /*curves the border of the default square to become a circle
-    height: 15px; /*circle size
-    width: 15px;
-    margin-right: 5px; /*circle position
-}
-*/
 
+/* Styling of legend icons */
 .legend div span {
     display: inline-block;
     border-radius: 50%; /*curve border to make a circle*/
