@@ -40,16 +40,15 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="About.html">About</a>
+                <a class="nav-link" href="About.html">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href ="form.html">Share your ideas</a>
+                <a class="nav-link" href ="form.html">Share your ideas</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href ="News.html">News</a>
-            </li>
+                <a class="nav-link" href ="News.html">News</a>
+              </li>
             </ul>
-            </form>
           </div>
         </div>
       </nav>
@@ -68,14 +67,30 @@
     <!-- MAP OVERLAY (FOR INTERACTIVE FEATURES) -->
     <div class='map-overlay-data'> <!-- this div class creates an overlay/background to place features on top of -->
         <label>Filter map view</label>
-        <div class="form-check"> <!-- When checked, it makes the legend visible -->
-            <input class="form-check-input" type="checkbox" value="" id="legendcheck"> <!-- By default, legend if hidden (unchecked) -->
-            <label class="form-check-label" for="flexCheckDefault"> 
-                Legend
-            </label>
+
+
+      <!-- FILTER FEATURES (INTERACTIVE CHECKBOXES) -->
+
+        <div class="form-check"> <!-- When checked, it makes the average income legend visible -->
+          <input class="form-check-input" type="checkbox" value="" id="incomeLegendCheck"> <!-- By default, legend if hidden (unchecked) -->
+          <label class="form-check-label" for="flexCheckDefault"> 
+            Average Income Legend
+          </label>
         </div>
 
-    <!-- FILTER FEATURES (INTERACTIVE CHECKBOXES) -->
+        <div class="form-check"> <!-- When checked, it makes the population density legend visible -->
+          <input class="form-check-input" type="checkbox" value="" id="popLegendCheck"> <!-- By default, legend if hidden (unchecked) -->
+          <label class="form-check-label" for="flexCheckDefault"> 
+            Population Density Legend
+          </label>
+        </div>
+
+        <div class="form-check"> <!-- When checked, it makes the disability index legend visible -->
+          <input class="form-check-input" type="checkbox" value="" id="disLegendCheck"> <!-- By default, legend if hidden (unchecked) -->
+          <label class="form-check-label" for="flexCheckDefault"> 
+            Mean Disability Benefits Legend
+          </label>
+        </div>
   
         <div class="form-check"> <!-- Allows users to view or remove the layer of subway stations -->
             <input class="form-check-input" type="checkbox" value="" id="subwayCheck"> <!-- Default is set to unchecked -->
@@ -91,6 +106,13 @@
           </label>
         </div>
 
+        <div class="form-check"> <!-- Allows users to view or remove the cycling network layer -->
+          <input class="form-check-input" type="checkbox" value="" id="bikeCheck"> <!-- Default is set to unchecked -->
+          <label class="form-check-label" for="flexCheckChecked">
+              Bike Lanes
+          </label>
+        </div>
+
         <div class="form-check"> <!-- Allows users to view or remove the layer of subway station buffers -->
           <input class="form-check-input" type="checkbox" value="" id="buffCheck"> <!-- Default is set to unchecked -->
           <label class="form-check-label" for="flexCheckChecked">
@@ -98,12 +120,6 @@
           </label>
         </div>
 
-        <div class="form-check"> <!-- Allows users to view or remove the cycling network layer -->
-          <input class="form-check-input" type="checkbox" value="" id="bikeCheck"> <!-- Default is set to unchecked -->
-          <label class="form-check-label" for="flexCheckChecked">
-              Bike Lanes
-          </label>
-        </div>
 
          <!-- FILTER MENU -->
      
@@ -123,11 +139,37 @@
 
       </div>
 
-    <!-- LEGEND -->
-    <div id='legend' class='legend'>
-        <h1>Mean neighbourhood income (in $)</h1> <!-- This will add a header to the legend. I do not have one now; it is obvious it is a legend without one.
-            However, as this map evolves for my final project, I may wish to add a header, so I am keeping this code as a placeholder -->
-        <!-- The legend contents will appear below the header (if one is added) -->
+    <!-- Income Legend -->
+    <div id='incomeLegend' class='legend'>
+      <h6>Average Income ($)</h6> 
+        <div><span style='background-color: grey'></span>0</div>
+        <div><span style='background-color: #b3c5af'></span>0 - 25,989</div>
+        <div><span style='background-color: #8da685'></span>25,989 - 33,974</div>
+        <div><span style='background-color: #326f07'></span>33,974 - 44,567</div>
+        <div><span style='background-color: #245b08'></span>44,567 - 56,911</div>
+        <div><span style='background-color: #164808'></span>56,911 - 89,330</div>
+    </div>
+
+    <!-- Population Density Legend -->
+    <div id='popLegend' class='legend'>
+      <h6>Population Density (per sq km)</h6> 
+        <div><span style='background-color: grey'></span>0</div>
+        <div><span style='background-color: #ccb5ae'></span>0 - 1,040</div>
+        <div><span style='background-color: #ac8f85'></span>1,040 - 3,594</div>
+        <div><span style='background-color: #784224'></span>3,594 - 5,072</div>
+        <div><span style='background-color: #65311F'></span>5,072 - 7,662</div>
+        <div><span style='background-color: #532119'></span>7,662 - 12,859</div>
+    </div>
+
+    <!-- Disability Index Legend -->
+    <div id='disLegend' class='legend'>
+      <h6>Mean Disability Benefits ($)</h6> 
+        <div><span style='background-color: grey'></span>0</div>
+        <div><span style='background-color: #ddb7d9'></span>0 - 3,650</div>
+        <div><span style='background-color: #ca92c4'></span>3,650 - 8,000</div>
+        <div><span style='background-color: #aa3aa1'></span>8,000 - 9,980</div>
+        <div><span style='background-color: #8d2b86'></span>9,980 - 11,020</div>
+        <div><span style='background-color: #711c6c'></span>11,020 - 13,808</div>
     </div>
 
 <!-- JAVASCRIPT -->

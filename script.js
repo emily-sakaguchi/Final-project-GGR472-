@@ -1,5 +1,5 @@
 /*--------------------------------------------------------------------
-GGR472 Lab 3
+GGR472 Final Project
 JavaScript
 --------------------------------------------------------------------*/
 
@@ -79,22 +79,6 @@ let cafejson;
     });
 
 map.on('load', () => {
-
-//the Turf collect function is used below to collect the unique '_id' properties from the cafe patio points data for each neighbourhood
-//the result of the function is stored in a variable called cafe_neighb
-let cafe_neighb = turf.collect(neighbourhoodsjson, cafejson, '_id', 'values');
-console.log(cafe_neighb) //Viewing the collect output in the console
-
-let maxcafe = 0; //a variable to store the maximum count of collisions in a given cell
-
-//below is a conditional statment to find the maximum cafe count in any given neighbourhood
-cafe_neighb.features.forEach((feature) => {
-feature.properties.COUNT = feature.properties.values.length
-if (feature.properties.COUNT > maxcafe) { //this line tests if the count in a hexagon exceeds the maximum count found up to that point
-    console.log(feature); //Allows me to view the process of determining the maximum count in the console
-    maxcafe = feature.properties.COUNT//if the cafe count is higher, this value becomes the new maximum stored in maxcafe
-}
-});
 
     map.addSource('subway-stns',{
         type: 'geojson',
@@ -250,22 +234,18 @@ if (feature.properties.COUNT > maxcafe) { //this line tests if the count in a he
         'paint': {
             'circle-radius':['interpolate', ['linear'], ['zoom'], 9, 1, 10.5, 2, 12, 3, 15, 5],
             // the above code adjusts the size of points according to the zoom level
-            'circle-color':'blue'
+            'circle-color':'yellow'
         }
     });
 
 })
-
-
-
-
 
 /*--------------------------------------------------------------------
 INTERACTIVITY
 - check boxes and buttons
 --------------------------------------------------------------------*/
 
-//event listener to return map view to full screen on button click
+//Event listener to return map view to full screen on button click
 document.getElementById('returnbutton').addEventListener('click', () => {
     map.flyTo({
         center: [-79.371, 43.720],
@@ -274,17 +254,45 @@ document.getElementById('returnbutton').addEventListener('click', () => {
     });
 });
 
-//Legend display (check box)
-let legendcheck = document.getElementById('legendcheck');
+// Income legend display (check box)
+let incomeLegendCheck = document.getElementById('incomeLegendCheck');
 
-legendcheck.addEventListener('click', () => {
-    if (legendcheck.checked) {
-        legendcheck.checked = true; //when checked (true), the legend block is visible
-        legend.style.display = 'block';
+incomeLegendCheck.addEventListener('click', () => {
+    if (incomeLegendCheck.checked) {
+        incomeLegendCheck.checked = true; //when checked (true), the legend block is visible
+        incomeLegend.style.display = 'block';
     }
     else {
-        legend.style.display = "none"; 
-        legendcheck.checked = false; //when unchecked (false), the legend block is not displayed
+        incomeLegend.style.display = "none"; 
+        incomeLegendCheck.checked = false; //when unchecked (false), the legend block is not displayed
+    }
+});
+
+// Population legend display (check box)
+let popLegendCheck = document.getElementById('popLegendCheck');
+
+popLegendCheck.addEventListener('click', () => {
+    if (popLegendCheck.checked) {
+        popLegendCheck.checked = true; //when checked (true), the legend block is visible
+        popLegend.style.display = 'block';
+    }
+    else {
+        popLegend.style.display = "none"; 
+        popLegendCheck.checked = false; //when unchecked (false), the legend block is not displayed
+    }
+});
+
+//Disability index legend display (check box)
+let disLegendCheck = document.getElementById('disLegendCheck');
+
+disLegendCheck.addEventListener('click', () => {
+    if (disLegendCheck.checked) {
+        disLegendCheck.checked = true; //when checked (true), the legend block is visible
+        disLegend.style.display = 'block';
+    }
+    else {
+        disLegend.style.display = "none"; 
+        disLegendCheck.checked = false; //when unchecked (false), the legend block is not displayed
     }
 });
 
@@ -342,8 +350,8 @@ map.on('click', 'neighbourhoods-fill', (e) => {
         .setLngLat(e.lngLat) //Coordinates of the mouse click to determine the coordinates of the pop-up
         //Text for the pop-up:
         .setHTML("<b>Neighbourhood Name:</b> " + e.features[0].properties.FIELD_7 + "<br>" +// shows neighbourhood name
-            "<b>Improvment Status:</b> " + e.features[0].properties.FIELD_9 +  "<br>" +//shows neighbourhood improvement status
-            "<b>CafeTO patio count:</b> " + e.features[0].properties.COUNT)  // shows the number of patios per neighbourhood
+            "<b>Improvment Status:</b> " + e.features[0].properties.FIELD_9//shows neighbourhood improvement status
+            )
         .addTo(map); //Adds the popup to the map
 });
 
@@ -410,7 +418,7 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
         map.setPaintProperty(
             'neighbourhoods-fill', 'fill-color', [
                  'step', //this allows for ramped colour values
-                    ['get', 'Total_income__Average_amount___'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
+                    ['get', 'Total_income__Average_amount___'], //Classification of average income is the category of interest
                     'black',
                     0, 'grey',
                     25989, '#b3c5af', 
@@ -426,7 +434,7 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
                 map.setPaintProperty(
                     'neighbourhoods-fill', 'fill-color', [  
                         'step', //this allows for categorical colour values
-                        ['get', 'Population_density_per_square_k'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
+                        ['get', 'Population_density_per_square_k'], //Classification of population density is the category of interest
                         'black',
                         0, 'grey', // Colours assigned to values  >= each step is a quintile (darker colour indiated greater density)
                         1040, '#ccb5ae', //lightest colour for least dense population 
@@ -442,7 +450,7 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
                     map.setPaintProperty(
                         'neighbourhoods-fill', 'fill-color', [  
                             'step', //this allows for visualization of the continuous data by grouping values
-                            ['get', 'CPP_QPP_Disability_benefits__Av'], //Classification of neighbourhood status (improvement area, etc.) is the category of interest
+                            ['get', 'CPP_QPP_Disability_benefits__Av'], //Classification of mean disability benefits received is the category of interest
                             'black',
                             0, 'grey', // Colours assigned to values >= each step is a quintile
                             3650, '#ddb7d9',
