@@ -1,3 +1,6 @@
+/*map page styling*/
+/*vw is used for sizing throughout to make the map accessible from a range of devices*/
+
 .map { /*formats the position of the map relative to the web page*/
     position: absolute;
     top: 0;
@@ -10,36 +13,36 @@
 
 .map-overlay-search { /*formats the overlay boxes on top of the map to provide a white background for text and interactive features*/
     position: relative;
-    font: 14px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font: 1vw 'Helvetica Neue', Arial, Helvetica, sans-serif;
     background: rgba(255, 255, 255, 0.8);
     top: 0;
     left: 0;
-    width: 260px;
-    margin: 10px 0 0 10px;
-    padding: 10px; /*around elements inside the overlay*/
+    width: 18.5vw;
+    margin: 1vw 1vw 1vw;
+    padding: 1vw; /*around elements inside the overlay*/
     overflow: visible;
 }
 
 .geocoder { /*formats the geocoder (search for location)*/
     position: relative;
-    margin: 10px 0 10px; /*adds padding so that it does not look cramped*/
+    margin: 1vw 0vw 1vw; /*adds padding so that it does not look cramped*/
 }
 
 #returnbutton {
     position: relative;
-    margin: 5px 0 5px; /*adds padding so that it does not look cramped*/
+    margin: 1vw 0 1vw; /*adds padding so that it does not look cramped*/
     width: 100%; /*sets button width to the width of the block underneath it*/
 }
 
 .map-overlay-data {
     position: relative;
-    font: 14px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font: 1vw 'Helvetica Neue', Arial, Helvetica, sans-serif;
     background: rgba(255, 255, 255, 0.8); /*makes the background white*/
-    width: 260px;
+    width: 18.5vw;
     top: 0;
-    left: 10px;
-    margin-top: 10px;
-    padding: 10px; /*adds padding so that it does not look cramped*/
+    left: 1vw;
+    margin-top: 1vw;
+    padding: 1vw; /*adds padding so that it does not look cramped*/
     overflow: visible;
 }
 /*formatting of legend background block (see further down for legend content formatting)*/
@@ -47,14 +50,14 @@
     position: absolute;
     display: none;
     background-color: #fff;
-    border-radius: 3px;
+    border-radius: 0.1vw;
     bottom: 0;
-    margin-bottom: 30px;
+    margin-bottom: 2vw;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /*horizontal shadow, vertical shadow, size of shadow, color*/
-    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    padding: 10px;
-    right: 10px;
-    z-index: 1;     /* Specifies stack order of elements */
+    font: 1vw 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    padding: 1vw;
+    right: 1vw;
+    z-index: 1;  /* Specifies stack order of elements */
 } 
 
 
@@ -62,7 +65,11 @@
 .legend div span {
     display: inline-block;
     border-radius: 50%; /*curve border to make a circle*/
-    height: 10px; /*size of circle*/
-    width: 10px;
-    margin-right: 5px; /*position of circle*/
+    height: 0.6vw; /*size of circle*/
+    width: 0.6vw;
+    margin-right: 0.5vw; /*position of circle*/
+}
+
+h1 {
+    font-size: 1.8vw;
 }
