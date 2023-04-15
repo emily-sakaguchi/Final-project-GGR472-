@@ -258,49 +258,6 @@ if (feature.properties.COUNT > maxcafe) { //this line tests if the count in a he
 
 
 
-/*--------------------------------------------------------------------
-LEGEND
---------------------------------------------------------------------*/
-//Declare array variables for labels and colours
-var legendlabels = [ //I use var rather than const here to provide myself with flexiblity as the legend changes
-'0',  //as string rather than int so that commas can be added for readability
-'25,989', 
-'33,974', 
-'44,567',  
-'56,911', 
-'89,330', 
-];
-
-var legendcolours = [ //I use var rather than const here to provide myself with flexiblity as the legend changes
-'grey',
-'#b3c5af', 
-'#8da685',
-'#326f07', 
-'#245b08', 
-'#164808'  
-];
-
-//legend variable that corresponds to legend div tag in html
-const legend = document.getElementById('legend');
-
-//Creates a legend block containing colours and labels
-legendlabels.forEach((label, i) => {
-    const color = legendcolours[i];
-
-    const item = document.createElement('div'); //creates the rows
-    const key = document.createElement('span'); //adds a key (circle of colour) to the row
-
-    key.className = 'legend-key'; //style proprties assigned in style.css
-    key.style.backgroundColor = color; //the color is assigned in the layers array
-
-    const value = document.createElement('span'); //adds a value to each row 
-    value.innerHTML = `${label}`; //adds a text label to the value 
-
-    item.appendChild(key); //appends the key to the legend row
-    item.appendChild(value); //appends the value to the legend row
-
-    legend.appendChild(item); //appends each row to the legend
-});
 
 
 /*--------------------------------------------------------------------
@@ -512,6 +469,67 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
             )
         };       
         });
+/*--------------------------------------------------------------------
+LEGEND
+--------------------------------------------------------------------*/
+var legendlabels
+if (attributevalue == 'income') {
+    legendlabels = 
+    '0',  //as string rather than int so that commas can be added for readability
+    '25,989', 
+    '33,974', 
+    '44,567',  
+    '56,911', 
+    '89,330';
+    }
+else if (attributevalue == 'population') {
+    'test',
+    'test',
+    'test',
+    'test',
+    'test',
+    'test';
+}
+else {
+    legendlabels = 
+    'patios',
+    'test',
+    'test',
+    'test',
+    'test',
+    'test';
+}
+
+var legendcolours = [ //I use var rather than const here to provide myself with flexiblity as the legend changes
+'grey',
+'#b3c5af', 
+'#8da685',
+'#326f07', 
+'#245b08', 
+'#164808'  
+];
+
+//legend variable that corresponds to legend div tag in html
+const legend = document.getElementById('legend');
+
+//Creates a legend block containing colours and labels
+legendlabels.forEach((label, i) => {
+    const color = legendcolours[i];
+
+    const item = document.createElement('div'); //creates the rows
+    const key = document.createElement('span'); //adds a key (circle of colour) to the row
+
+    key.className = 'legend-key'; //style proprties assigned in style.css
+    key.style.backgroundColor = color; //the color is assigned in the layers array
+
+    const value = document.createElement('span'); //adds a value to each row 
+    value.innerHTML = `${label}`; //adds a text label to the value 
+
+    item.appendChild(key); //appends the key to the legend row
+    item.appendChild(value); //appends the value to the legend row
+
+    legend.appendChild(item); //appends each row to the legend
+});
 
 
     /*--------------------------------------------------------------------
