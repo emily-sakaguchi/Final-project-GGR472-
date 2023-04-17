@@ -68,11 +68,11 @@
 
     <!-- MAP OVERLAY (FOR INTERACTIVE FEATURES) -->
     <div class='map-overlay-data'> <!-- this div class creates an overlay/background to place features on top of -->
-        <label>Filter map view</label>
-
+      <!-- this div class makes the filter menu collapsible -->
+      <button type="button" class="collapsible">Filter map view</button> 
+      <div class="content">
 
       <!-- FILTER FEATURES (INTERACTIVE CHECKBOXES) -->
-
         <div class="form-check"> <!-- When checked, it makes the average income legend visible -->
           <input class="form-check-input" type="checkbox" value="" id="incomeLegendCheck"> <!-- By default, legend if hidden (unchecked) -->
           <label class="form-check-label" for="flexCheckDefault"> 
@@ -122,7 +122,6 @@
           </label>
         </div>
 
-
          <!-- DROP-DOWN MENU -->
          <form>
           <fieldset id="neighbourhoodfieldset">
@@ -136,7 +135,7 @@
             </select>
           </fieldset>
         </form> 
-
+      </div>
       </div>
 
     <!-- Income Legend -->

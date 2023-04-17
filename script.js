@@ -470,21 +470,43 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
                     'fill-color', 'black',
                     'fill-opacity', 0.5, //Opacity set to 50%
                     'fill-outline-color', 'white',
-            )
-        };       
-        });
+                    )
+                };       
+            });
 
-    /*--------------------------------------------------------------------
-    HOVER EVENT
-    - if a neighbourhood polygon is under the mouse hover, it will turn opaque and white to create a highighting effect
-    --------------------------------------------------------------------*/
-
-    map.on('mousemove', 'neighbourhoods-fill', (e) => {
-        if (e.features.length > 0) { //determines if there is a feature under the mouse
-            map.setFilter('neighbourhoods-opaque', ['==', ['get', 'OBJECTID'], e.features[0].properties.OBJECTID]); //applies the empty filter created
-        }
-    });
+/*--------------------------------------------------------------------
+HOVER EVENT    
+- if a neighbourhood polygon is under the mouse hover, it will turn opaque and white to create a highighting effect
+ --------------------------------------------------------------------*/
+       
+ map.on('mousemove', 'neighbourhoods-fill', (e) => {
+        
+    if (e.features.length > 0) { //determines if there is a feature under the mouse
+        map.setFilter('neighbourhoods-opaque', ['==', ['get', 'OBJECTID'], e.features[0].properties.OBJECTID]); //applies the empty filter created
+    }    
+});
     
-    map.on('mouseleave', 'neighbourhoods-opaque', () => { //removes the highlight when the mouse moves away
-        map.setFilter("neighbourhoods-opaque",['==', ['get', 'OBJECTID'], '']);
-    });
+    
+map.on('mouseleave', 'neighbourhoods-opaque', () => { //removes the highlight when the mouse moves away
+    map.setFilter("neighbourhoods-opaque",['==', ['get', 'OBJECTID'], '']);   
+});
+
+    
+/*--------------------------------------------------------------------
+COLLAPSE MENU
+- code collapses the menu of interctive features  to help users focus on the map
+--------------------------------------------------------------------*/
+var coll = document.getElementsByClassName("collapsible"); //"collapsible" the id set in the html to contain all the interactive features
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() { //when users click the button, it will expand
+    this.classList.toggle("active-collapse"); 
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none"; //hides the menu
+    } else {
+      content.style.display = "block"; //shows the menu
+    }
+  });
+}
