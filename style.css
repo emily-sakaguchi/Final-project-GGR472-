@@ -1,5 +1,4 @@
 /*map page styling*/
-/*vw is used for sizing throughout to make the map accessible from a range of devices*/
 
 .map { /*formats the position of the map relative to the web page*/
     position: absolute;
@@ -13,24 +12,27 @@
 
 .map-overlay-search { /*formats the overlay boxes on top of the map to provide a white background for text and interactive features*/
     position: relative;
-    font: 1vw 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font: 1.2vw 'Helvetica Neue', Arial, Helvetica, sans-serif;
     background: rgba(255, 255, 255, 0.8);
     top: 0;
     left: 0;
-    width: 18.5vw;
-    margin: 1vw 1vw 1vw;
-    padding: 1vw; /*around elements inside the overlay*/
-    overflow: visible;
+    width: 260px;
+    margin: 10px 10px 10px;
+    padding: 10px; /*around elements inside the overlay*/
+    overflow: visible
 }
 
 .geocoder { /*formats the geocoder (search for location)*/
     position: relative;
-    margin: 1vw 0vw 1vw; /*adds padding so that it does not look cramped*/
+    margin: 0.5vw 0vw 0.5vw; /*adds padding so that it does not look cramped*/
 }
+
+/*Here we switch to px over vw as the mapbox geocoder preset style is difficult to overwrite; 
+we have opted for consistency as we would require more time and training to overwrite the code for sizing the mapbox API search bar*/
 
 #returnbutton {
     position: relative;
-    margin: 1vw 0 1vw; /*adds padding so that it does not look cramped*/
+    margin: 10px 0 10px; /*adds padding so that it does not look cramped*/
     width: 100%; /*sets button width to the width of the block underneath it*/
 }
 
@@ -38,11 +40,10 @@
     position: relative;
     font: 1vw 'Helvetica Neue', Arial, Helvetica, sans-serif;
     background: rgba(255, 255, 255, 0.8); /*makes the background white*/
-    width: 18.5vw;
-    top: 0;
-    left: 1vw;
-    margin-top: 1vw;
-    padding: 1vw; /*adds padding so that it does not look cramped*/
+    width: 260px;
+    left: 10px;
+    margin-top: 10px;
+    padding: 10px; /*adds padding so that it does not look cramped*/
     overflow: visible;
 }
 /*formatting of legend background block (see further down for legend content formatting)*/
