@@ -229,11 +229,11 @@ map.on('load', () => {
         'type':'circle',
         'source': 'cafes_json',
         'paint': {
-            'circle-radius':['interpolate', ['linear'], ['zoom'], 9, 1, 10.5, 2, 12, 3, 15, 5],
+            'circle-radius':['interpolate', ['linear'], ['zoom'], 9, 1, 10.5, 3, 12, 3.5, 15, 4],
             // the above code adjusts the size of points according to the zoom level
             'circle-color':'yellow',
             'circle-stroke-color': 'black',
-            'circle-stroke-width': 0.5
+            'circle-stroke-width': 0.3,
         }
     });
 
@@ -243,6 +243,7 @@ map.on('load', () => {
 INTERACTIVITY
 - check boxes and buttons
 --------------------------------------------------------------------*/
+
 //Event listener to return map view to full screen on button click
 document.getElementById('returnbutton').addEventListener('click', () => {
     map.flyTo({
@@ -420,13 +421,11 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
             'neighbourhoods-fill', 'fill-color', [
                  'step', //this allows for ramped colour values
                     ['get', 'Total_income__Average_amount___'], //Classification of average income is the category of interest
-                    'black',
-                    0, 'grey',
-                    25989, '#b3c5af', 
-                    33974, '#8da685',
-                    44567, '#326f07', 
-                    56911, '#245b08', 
-                    89330, '#164808'
+                    //quartile classification, colours light to dark (darkest = highest density)
+                    '#b3c5af', 
+                    29305.75, '#8da685', //25th percentile
+                    36538.5, '#326f07', //50th percentile
+                    44805.75, '#164808', //75th percentile
                     ],
                 'fill-opacity', 0.5, //Opacity set to 50%
                 'fill-outline-color', 'white'
@@ -436,13 +435,11 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
                     'neighbourhoods-fill', 'fill-color', [  
                         'step', //this allows for categorical colour values
                         ['get', 'Population_density_per_square_k'], //Classification of population density is the category of interest
-                        'black',
-                        0, 'grey', // Colours assigned to values  >= each step is a quintile (darker colour indiated greater density)
-                        1040, '#ccb5ae', //lightest colour for least dense population 
-                        3594, '#ac8f85', 
-                        5072, '#784224', 
-                        7662, '#65311F', 
-                        12859, '#532119' //darkest colour for densest population
+                        //quartile classification, colours light to dark (darkest = highest density)
+                        '#ccb5ae', 
+                        3595.25, '#ac8f85', //25th percentile
+                        5071.5, '#784224', //50th percentile
+                        7621.25, '#532119' //75th percentile
                     ],
                     'fill-opacity', 0.5, //Opacity set to 50%
                     'fill-outline-color', 'white'
@@ -452,13 +449,11 @@ document.getElementById("neighbourhoodfieldset").addEventListener('change',(e) =
                         'neighbourhoods-fill', 'fill-color', [  
                             'step', //this allows for visualization of the continuous data by grouping values
                             ['get', 'CPP_QPP_Disability_benefits__Av'], //Classification of mean disability benefits received is the category of interest
-                            'black',
-                            0, 'grey', // Colours assigned to values >= each step is a quintile
-                            3650, '#ddb7d9',
-                            8000, '#ca92c4', 
-                            9980, '#aa3aa1',
-                            11020, '#8d2b86', 
-                            13808, '#711c6c'
+                           //quartile classification, colours light to dark (darkest = highest density)
+                            '#ddb7d9', 
+                            8164.5, '#ca92c4', //25th percentile
+                            9979.5, '#aa3aa1', //50th percentile
+                            11018, '#711c6c' //75th percentile
                         ],
                         'fill-opacity', 0.5, //Opacity set to 50%
                         'fill-outline-color', 'white'
